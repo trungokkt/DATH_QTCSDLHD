@@ -1,0 +1,70 @@
+{{>header_main user=user}}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                {{>sidebar_main categories=categories}}
+            </div>
+            {{#with product}}
+            <div class="col-sm-9 padding-right">
+                <div class="product-details">
+                    <!--product-details-->
+                    <div class="col-sm-5">
+                        <div class="view-product">
+                            <img src="{{photo}}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="product-information">
+                            <!--/product-information-->
+                            <img src="/images/product-details/new.jpg" class="newarrival" alt="" />
+                            <h2>{{ name }}</h2>
+                            <p>{{ manufacturer }}</p>
+                            <span>
+                                <span>{{ formatMoney price}}</span>
+                                <a type="button" class="btn btn-fefault cart">
+                                    đăng kí tiêm ngay
+                                </a>
+                            </span>
+                            <p><b></b>{{statusName}}</p>
+                            {{#each ../categories}}
+                            {{#if_eq value ../this.types.[0] }}
+                            <p><b>Loại:</b>{{label}}</p>
+                            {{/if_eq}}
+                            {{/each}}
+                            <p><b> Phòng ngừa:</b> {{prevention}}</p>
+                            <a href=""><img src="/images/product-details/share.png" class="share img-responsive"
+                                    alt="" /></a>
+                        </div>
+                        <!--/product-information-->
+                    </div>
+                </div>
+                <!--/product-details-->
+
+                <div class="category-tab shop-details-tab">
+                    <!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#details" data-toggle="tab">Chi tiết</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="details">
+                            <div class="col-sm-12">
+                                {{{description}}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/category-tab-->
+                <!--/recommended_items-->
+            </div>
+            {{/with}}
+        </div>
+    </div>
+</section>
+
+{{>footer_main}}
+{{>script_main}}

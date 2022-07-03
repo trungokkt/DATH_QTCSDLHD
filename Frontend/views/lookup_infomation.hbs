@@ -1,0 +1,44 @@
+{{>header_main user=user}}
+
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Mã</th>
+                        <th scope="col">Ngày đăng kí</th>
+                        <th scope="col">Tổng Tiền</th>
+                        <th scope="col">Danh Sách</th>
+                        <th scope="col">Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orders}}
+                    <tr>
+                        <th scope="row">{{@index}}</th>
+                        <td>{{_id}}</td>
+                        <td>{{createDate}}</td>
+                        <td>
+                            {{formatMoney totalBill}}
+                        </td>
+                         <td>
+                            {{#each orderItem}}
+                            <div>
+                               {{name}}
+                            </div>
+                            {{/each}}
+                        </td>
+                        <td>
+                            {{#if isPayment}}Đã tiêm{{else}}Chưa tiêm xong{{/if}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{>footer_main}}
+{{>script_main}}

@@ -1,0 +1,544 @@
+{{>header_main user=user}}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+
+
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="contact-form">
+                    <h2 class="title text-center">Thông tin</h2>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form row" name="contact-form"
+                        onsubmit="return submitAddProduct(event);">
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="address">Họ tên</label>
+                            <input type="text" id="name" name="name" class="form-control" required="required"
+                                placeholder="Tên người tiêm">
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="relations">Mối quan hệ</label>
+                            <select class="form-control" id="relations" name="relations">
+                                <option>Bản thân</option>
+                                <option>Cha</option>
+                                <option>Mẹ</option>
+                                <option>Ông</option>
+                                <option>Bà</option>
+                                <option>Anh</option>
+                                <option>Chị</option>
+                                <option>Em</option>
+                                <option>Vợ</option>
+                                <option>Chồng</option>
+                                <option>Con</option>
+                                <option>Cùng hộ khẩu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="dob">Ngày sinh</label>
+                            <input type="date" id="dob" name="dob" class="form-control" required="required"
+                                placeholder="Ngày sinh">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="gender" class="d-block text-left" id="gender__BV_label_">Giới tính</label>
+                            <div>
+                                <div class="radio-gender">
+                                    <div class="radio">
+                                        <label><input type="radio" name="gender" id="Nam" value="Nam"
+                                                checked>Nam</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="gender" id="Nữ" value="Nữ">Nữ</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="address">Số điện thoại</label>
+                            <input type="text" id="phone" name="phone" class="form-control" required="require"
+                                placeholder="Số điện thoại">
+                        </div>
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="address">Email</label>
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-12 col-xs-12">
+                            <label for="street">Địa chỉ</label>
+                            <input type="text" id="street" name="street" class="form-control" required="required"
+                                placeholder="Số nhà  + tên đường">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="province">Tỉnh/Thành phố:</label>
+                            <select class="form-control" id="province" name="province" required="require">
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="district">Quận/Huyện:</label>
+                            <select class="form-control" id="district" name="district" required="require">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="wards">Xã Phường:</label>
+                            <select class="form-control" id="wards" name="wards" required="require">
+
+                            </select>
+                        </div>
+                        <input type="text" id="address" name="address" hidden>
+
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <label for="provinceVNVC">Tỉnh/ Thành:</label>
+                                <select class="form-control" id="provinceVNVC" name="provinceVNVC" required="require">
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group ">
+                                <label for="VNCC_adresss">Trung tâm tiêm chủng:</label>
+                                <select class="form-control" id="VNCC_adresss" name="VNCC_adresss" required="require">
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                CHỌN VẮC XIN CHO NGƯỜI TIÊM
+
+                            </div>
+                            <div>
+                                Quý khách có thể đăng ký thêm các loại vắc xin khác và sử dụng cho nhiều lần tiêm khác
+                                nhau.
+                            </div>
+                            <div class="col-sm-10 ">
+                                <div class="form-group">
+                                    <select class="form-control selectpicker" name="vaccines" id="select-vaccine"
+                                        data-show-subtext="true" data-live-search="true" multiple>
+
+                                    </select>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row product-show" style="width: 100%;">
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" class="btn btn-primary pull-right" style="margin-left: 5px;"
+                                value="Tiếp tục">
+
+                            <input type="button" class="btn btn-primary pull-right" id="reset-form"
+                                value="Nhập lại thông tin">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="contact-info">
+                    <div class="card">
+                        <h2 class="title text-center">DANH SÁCH NGƯỜI TIÊM</h2>
+                        <div class="card-body" id="show-victim">
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-6" style="padding-left: 12px;">
+                                    <p class="font-weight-bolder h6 text-dark">
+                                        Thanh toán:
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="font-weight-bolder h4 text-warning text-right" id="totalPayment">
+                                        1.635.000 VNĐ
+                                    </p>
+                                </div>
+                            </div>
+                            <form class="contact-form" action="/order" method="post">
+                                <div class="row">
+
+                                    <button type="submit"
+                                        class="btn btn-primary w-100 text-uppercase btn-radius-primary p-3 h5 el-button--primary">
+                                        <!---->
+                                        <!----><span>
+                                            XEM ĐIỀU KHOẢN VÀ THANH TOÁN
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/#contact-page-->
+
+{{>footer_main}}
+{{>script_main}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+<script>
+    var isSumbitted = false;
+    var products
+    var provinces
+    var district
+    var wards
+    var provinceVNVC
+    var cart
+    var totalPayment
+    var provinceVNVCSelector = $('#provinceVNVC')
+    var VNCC_adresssSelector = $('#VNCC_adresss')
+    var provinceSelector = $('#province')
+    var districtSelector = $('#district')
+    var wardsSelector = $('#wards')
+    $(document).ready(function () {
+        $.ajax({
+            async: false,
+            url: "http://localhost:8000/vaccines",
+            type: 'get',
+            success: function (result) {
+                products = result
+                products.forEach((product) => {
+                    $("#select-vaccine").append(`<option data-tokens="${product.name}" value="${product._id}">${product.name}</option>`)
+                })
+
+            }
+        })
+        $.ajax({
+            async: false,
+            url: "http://localhost:8000/provinces.json",
+            type: 'get',
+            success: function (result) {
+                provinces = result
+                provinceSelector.append(`<option></option>`)
+                provinceVNVCSelector.append(`<option></option>`)
+                provinces.forEach((element) => {
+                    provinceSelector.append(`<option value="${element.value}">${element.label}</option>`)
+                    provinceVNVCSelector.append(`<option value="${element.value}">${element.label}</option>`)
+                });
+
+            }
+        })
+        $.ajax({
+            async: false,
+            url: "http://localhost:8000/districts.json",
+            type: 'get',
+            success: function (result) {
+                district = result
+
+            }
+        })
+        $.ajax({
+            async: false,
+            url: "http://localhost:8000/wards.json",
+            type: 'get',
+            success: function (result) {
+                wards = result
+            }
+        })
+        $.ajax({
+            async: false,
+            url: "http://localhost:8000/trungtamtiemchung.json",
+            type: 'get',
+            success: function (result) {
+                provinceVNVC = result
+            }
+        })
+        getCart()
+    });
+    provinceSelector.change(function () {
+        let id = $(this).val()
+        var show_district = district.filter(w => w.parent === id).sort((a, b) => a.sort - b.sort);
+        districtSelector.empty()
+        wardsSelector.empty()
+        districtSelector.append(`<option></option> `)
+        show_district.forEach((element) => {
+            districtSelector.append(`<option value = "${element.value}" > ${element.label}</option> `)
+        })
+    })
+    districtSelector.change(function () {
+        let id = $(this).val()
+        var show_wards = wards.filter(w => w.parent === id).sort((a, b) => a.sort - b.sort);
+        wardsSelector.empty()
+        wardsSelector.append(`<option></option> `)
+        show_wards.forEach((element) => {
+            wardsSelector.append(`<option value = "${element.value}" > ${element.label}</option> `)
+        })
+    })
+    wardsSelector.change(function () {
+        let p = $('#province option:selected').text()
+        let d = $('#district option:selected').text()
+        let w = $('#wards option:selected').text()
+        let s = $('#street').val()
+        let address = `${s} - ${w} - ${d} - ${p} `
+        $('#address').val(address)
+    })
+    provinceVNVCSelector.change(function () {
+        let id = $(this).val()
+        var show_vnvc = provinceVNVC.filter(w => w.provinceId === id).sort((a, b) => a.order - b.order);
+        console.log(show_vnvc)
+        VNCC_adresssSelector.empty()
+        VNCC_adresssSelector.append(`<option></option> `)
+        show_vnvc.forEach((element) => {
+            VNCC_adresssSelector.append(`<option value = "${element.address}" > ${element.name}</ option> `)
+        })
+    })
+    function getCart() {
+        totalPayment = 0
+        $.ajax({
+            async: false,
+            url: "/getcart",
+            type: 'post',
+            success: function (result) {
+                cart = result.basketItems
+                $('#show-victim').empty()
+                for (const [key, value] of Object.entries(result.basketItems)) {
+                    const customer = JSON.parse(value)
+                    const vc = products.filter((vaccine) => customer.vaccines.includes(vaccine._id))
+                    let NameOfVaccines = ""
+                    let TongTien = 0
+                    vc.forEach((e, index) => {
+                        totalPayment += e.price
+                        TongTien += e.price
+                        NameOfVaccines += e.name
+                        if (index != vc.length - 1) {
+                            NameOfVaccines += ', '
+                        }
+                    })
+                    $('#show-victim').append(`
+                            <div class="register-info">
+                                <div class="d-flex flex-row">
+                                    <div class="victim-info w-100 mr-2">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-8">
+                                                <p class="text-primary text-left h4 font-weight-bolder"> ${customer.name} (${customer.relations})
+                                                </p>
+                                            </div>
+                                            <div align="center" class="col-md-4">
+                                                <div
+                                                    class=" text-secondary align-center d-flex flex-row justify-content-end">
+                                                    <button type="button" class="btn text-secondary btn-outline btn-sm">
+                                                        <svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="question circle"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-question-circle b-icon bi">
+                                                            <g
+                                                                transform="translate(8 8) scale(1.1 1.1) translate(-8 -8)">
+                                                                <path
+                                                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z">
+                                                                </path>
+                                                                <path
+                                                                    d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" class="btn text-secondary btn-outline btn-sm" onclick="editCartItem('${key}')">
+                                                        <svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="pencil"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-pencil b-icon bi">
+                                                            <g
+                                                                transform="translate(8 8) scale(1.1 1.1) translate(-8 -8)">
+                                                                <path
+                                                                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" class="btn text-secondary btn-outline btn-sm" onclick="deleteCartItem('${key}')">
+                                                        <svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="trash"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-trash b-icon bi">
+                                                            <g
+                                                                transform="translate(8 8) scale(1.1 1.1) translate(-8 -8)">
+                                                                <path
+                                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z">
+                                                                </path>
+                                                                <path fill-rule="evenodd"
+                                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z">
+
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters">
+                                            <div class="col-md-12">
+                                                <p class="text-left text-dark h6">
+                                                    Vaccine:
+                                                    <span class="font-weight-bolder text-dark h6">
+                                                        ${NameOfVaccines}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="text-left text-dark h6">
+                                                    Trung tâm:
+                                                    <span class="font-weight-bolder text-dark h6">
+                                                        ${customer.VNCC_adresss}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="border-style: dashed;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="font-weight-bolder h6 text-dark text-left">
+                                            Thành tiền
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="font-weight-bolder h4 text-primary text-right">
+                                            <span>
+                                                ${formatMoney(TongTien)}
+                                            </span >
+                                        </div >
+                                    </div >
+                                </div >
+                    <hr style="border-style: dashed;">
+                    </div>
+                `)
+                }
+                $("#totalPayment").html(formatMoney(totalPayment)).attr('style', 'color: #2a388f !important;')
+
+            }
+        })
+    }
+    function submitAddProduct(event) {
+        var dataObject = $("#main-contact-form").serializeObject();
+        $.ajax({
+            url: "/addCart",
+            type: 'post',
+            data: dataObject,
+            success: function (result) {
+                getCart()
+                $("#reset-form").trigger("click");
+            }
+        })
+        event.preventDefault();
+
+    }
+    function submitUpdateProduct(event, id) {
+        event.preventDefault();
+        var dataObject = $("#main-contact-form").serializeObject();
+        dataObject.customerId = id
+        $.ajax({
+            url: "/updateCart",
+            type: 'post',
+            data: dataObject,
+            success: function (result) {
+                getCart()
+                $("#reset-form").trigger("click");
+            }
+        })
+    }
+    function editCartItem(id) {
+        item = JSON.parse(cart[id])
+        console.log(item)
+        $('#name').val(item.name)
+        $('#relations').val(item.relations)
+        $('#dob').val(item.dob)
+        $('#' + item.gender).prop('checked', true)
+        $('#phone').val(item.phone)
+        $('#email').val(item.email)
+        $('#street').val(item.street).change()
+        $('#province').val(item.province).change()
+        $('#district').val(parseInt(item.district)).change()
+        $('#wards').val(item.wards).change()
+        $('#address').val(item.address)
+        $('#provinceVNVC').val(item.provinceVNVC).change()
+        $('#VNCC_adresss').val(item.VNCC_adresss).change()
+        $('.selectpicker#select-vaccine').selectpicker('val', item.vaccines).change();
+        $('#main-contact-form').attr('onsubmit', `return submitUpdateProduct(event,'${id}'); return false;`).change();
+    }
+    $("#select-vaccine").change(function () {
+        let ids = $(this).val()
+        $(".product-show").empty()
+        if (ids) {
+            ids.forEach((id) => {
+                product = products.find((s) => s._id == id)
+                $(".product-show").append(`
+                    <div class="col-sm-4" >
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a class="" href="/detail/${product.code}">
+                                        <h4 class="card-title text-left title text-2-line-prevention">${product.name}</h4>
+                                    </a>
+                                    <h6 data-v-3b02c8b7="" class="card-subtitle text-left sub-title text-muted">
+                                        <p data-v-3b02c8b7="" class="h6 text-dark text-2-line-prevention">
+                                            Giá: ${formatMoney(product.price)}
+                                        </p>
+                                    </h6>
+                                    <p class="card-text text-left pt-2">Phòng bệnh:</p>
+                                    <div class="card-text text-left pt-2 text-2-line-prevention" > ${product.prevention}</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>`)
+            })
+        }
+    })
+    $("#reset-form").click(() => {
+        $('#name').val('')
+        $('#relations').val('')
+        $('#dob').val('')
+        $('input[name="gender"]').removeAttr('checked')
+        $('#phone').val('')
+        $('#email').val('')
+        $('#street').val('')
+        $('#province').val('')
+        $('#district').val('')
+        $('#wards').val('')
+        $('#address').val('')
+        $('#provinceVNVC').val('')
+        $('#VNCC_adresss').val('')
+        $('.selectpicker#select-vaccine').selectpicker('val', '').change()
+        $('#main-contact-form').attr('onsubmit', `return submitAddProduct(event);`)
+    })
+</script>
+<script>
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+    $(function () {
+        $('.selectpicker').selectpicker();
+    });
+    function deleteCartItem(key) {
+        $.ajax({
+            url: "/deleteCart",
+            type: 'post',
+            data: { customerId: key },
+            success: function (result) {
+                getCart()
+            }
+        })
+
+    }
+</script>
+

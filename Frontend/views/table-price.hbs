@@ -1,0 +1,35 @@
+{{>header_main user=user}}
+
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Phòng bệnh</th>
+                        <th>Tên vắc xin</th>
+                        <th>Giá bán lẻ (vnđ)</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each products}}
+                    {{#if_eq sellType "retail"}}
+                    <tr>
+                        <td>{{@index}}</td>
+                        <td>{{prevention}}</td>
+                        <td>{{name}}</td>
+                        <td>{{formatMoney price}}</td>
+                        <td>{{statusName}}</td>
+
+                    </tr>
+                    {{/if_eq    }}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{>footer_main}}
+{{>script_main}}

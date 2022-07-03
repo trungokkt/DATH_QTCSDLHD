@@ -1,0 +1,144 @@
+.fix-text {
+  white-space: nowrap;
+  width: 16rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productinfo .name {
+  width: auto;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.product-image-wrapper:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.product-image-wrapper {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.radio-gender {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 40px;
+}
+
+.radio+.radio,
+.checkbox+.checkbox {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.tab-pane#details ul {
+  background-color: #fff;
+  border-bottom: #fff
+}
+
+#main-contact-form .add-vaccine {
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.show-tick {
+  white-space: nowrap;
+  width: 100%;
+  max-width: 96vw;
+  text-overflow: ellipsis;
+  border: 1px solid #000000;
+}
+
+
+.text-2-line-prevention,
+.text-5-line-prevention {
+  min-height: 36px;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.text-2-line-prevention {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+}
+
+.product-show .product-image-wrapper {
+  padding: 10px;
+}
+
+.victim-info p[data-v-202f896f] {
+  margin: 0;
+}
+
+.victim-info p {
+  margin: 0;
+}
+
+.text-primary {
+  color: #2a388f !important;
+}
+
+.font-weight-bolder {
+  font-weight: bolder !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-8 {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+}
+
+.col-4 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+
+.mr-2,
+.mx-2 {
+  margin-right: .5rem !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}

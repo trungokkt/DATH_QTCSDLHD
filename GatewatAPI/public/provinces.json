@@ -1,0 +1,381 @@
+[
+    {
+      "value": "1",
+      "label": "Thành Phố Hà Nội",
+      "region": "north",
+      "sort": 1
+    },
+    {
+      "value": "79",
+      "label": "Thành Phố Hồ Chí Minh",
+      "region": "south",
+      "sort": 2
+    },
+    {
+      "value": "48",
+      "label": "Thành Phố Đà Nẵng",
+      "region": "central",
+      "sort": 3
+    },
+    {
+      "value": "31",
+      "label": "Thành Phố Hải Phòng",
+      "region": "north",
+      "sort": 4
+    },
+    {
+      "value": "92",
+      "label": "Thành Phố Cần Thơ",
+      "region": "south",
+      "sort": 5
+    },
+    {
+      "value": "89",
+      "label": "Tỉnh An Giang",
+      "region": "south",
+      "sort": 6
+    },
+    {
+      "value": "77",
+      "label": "Tỉnh Bà Rịa - Vũng Tàu",
+      "region": "south",
+      "sort": 7
+    },
+    {
+      "value": "74",
+      "label": "Tỉnh Bình Dương",
+      "region": "south",
+      "sort": 8
+    },
+    {
+      "value": "70",
+      "label": "Tỉnh Bình Phước",
+      "region": "south",
+      "sort": 9
+    },
+    {
+      "value": "60",
+      "label": "Tỉnh Bình Thuận",
+      "region": "central",
+      "sort": 10
+    },
+    {
+      "value": "52",
+      "label": "Tỉnh Bình Định",
+      "region": "central",
+      "sort": 11
+    },
+    {
+      "value": "95",
+      "label": "Tỉnh Bạc Liêu",
+      "region": "south",
+      "sort": 12
+    },
+    {
+      "value": "24",
+      "label": "Tỉnh Bắc Giang",
+      "region": "north",
+      "sort": 13
+    },
+    {
+      "value": "6",
+      "label": "Tỉnh Bắc Kạn",
+      "region": "north",
+      "sort": 14
+    },
+    {
+      "value": "27",
+      "label": "Tỉnh Bắc Ninh",
+      "region": "north",
+      "sort": 15
+    },
+    {
+      "value": "83",
+      "label": "Tỉnh Bến Tre",
+      "region": "south",
+      "sort": 16
+    },
+    {
+      "value": "4",
+      "label": "Tỉnh Cao Bằng",
+      "region": "north",
+      "sort": 17
+    },
+    {
+      "value": "96",
+      "label": "Tỉnh Cà Mau",
+      "region": "south",
+      "sort": 18
+    },
+    {
+      "value": "11",
+      "label": "Tỉnh Điện Biên",
+      "region": "north",
+      "sort": 19
+    },
+    {
+      "value": "66",
+      "label": "Tỉnh Đắk Lắk",
+      "region": "central",
+      "sort": 20
+    },
+    {
+      "value": "67",
+      "label": "Tỉnh Đắk Nông",
+      "region": "central",
+      "sort": 21
+    },
+    {
+      "value": "75",
+      "label": "Tỉnh Đồng Nai",
+      "region": "south",
+      "sort": 22
+    },
+    {
+      "value": "87",
+      "label": "Tỉnh Đồng Tháp",
+      "region": "south",
+      "sort": 23
+    },
+    {
+      "value": "64",
+      "label": "Tỉnh Gia Lai",
+      "region": "central",
+      "sort": 24
+    },
+    {
+      "value": "2",
+      "label": "Tỉnh Hà Giang",
+      "region": "north",
+      "sort": 25
+    },
+    {
+      "value": "35",
+      "label": "Tỉnh Hà Nam",
+      "region": "north",
+      "sort": 26
+    },
+    {
+      "value": "42",
+      "label": "Tỉnh Hà Tĩnh",
+      "region": "central",
+      "sort": 27
+    },
+    {
+      "value": "17",
+      "label": "Tỉnh Hòa Bình",
+      "region": "north",
+      "sort": 28
+    },
+    {
+      "value": "33",
+      "label": "Tỉnh Hưng Yên",
+      "region": "north",
+      "sort": 29
+    },
+    {
+      "value": "30",
+      "label": "Tỉnh Hải Dương",
+      "region": "north",
+      "sort": 30
+    },
+    {
+      "value": "93",
+      "label": "Tỉnh Hậu Giang",
+      "region": "south",
+      "sort": 31
+    },
+    {
+      "value": "56",
+      "label": "Tỉnh Khánh Hòa",
+      "region": "central",
+      "sort": 32
+    },
+    {
+      "value": "91",
+      "label": "Tỉnh Kiên Giang",
+      "region": "south",
+      "sort": 33
+    },
+    {
+      "value": "62",
+      "label": "Tỉnh Kon Tum",
+      "region": "central",
+      "sort": 34
+    },
+    {
+      "value": "12",
+      "label": "Tỉnh Lai Châu",
+      "region": "north",
+      "sort": 35
+    },
+    {
+      "value": "80",
+      "label": "Tỉnh Long An",
+      "region": "south",
+      "sort": 36
+    },
+    {
+      "value": "10",
+      "label": "Tỉnh Lào Cai",
+      "region": "north",
+      "sort": 37
+    },
+    {
+      "value": "68",
+      "label": "Tỉnh Lâm Đồng",
+      "region": "central",
+      "sort": 38
+    },
+    {
+      "value": "20",
+      "label": "Tỉnh Lạng Sơn",
+      "region": "north",
+      "sort": 39
+    },
+    {
+      "value": "36",
+      "label": "Tỉnh Nam Định",
+      "region": "north",
+      "sort": 40
+    },
+    {
+      "value": "40",
+      "label": "Tỉnh Nghệ An",
+      "region": "central",
+      "sort": 41
+    },
+    {
+      "value": "37",
+      "label": "Tỉnh Ninh Bình",
+      "region": "north",
+      "sort": 42
+    },
+    {
+      "value": "58",
+      "label": "Tỉnh Ninh Thuận",
+      "region": "central",
+      "sort": 43
+    },
+    {
+      "value": "25",
+      "label": "Tỉnh Phú Thọ",
+      "region": "north",
+      "sort": 44
+    },
+    {
+      "value": "54",
+      "label": "Tỉnh Phú Yên",
+      "region": "central",
+      "sort": 45
+    },
+    {
+      "value": "44",
+      "label": "Tỉnh Quảng Bình",
+      "region": "central",
+      "sort": 46
+    },
+    {
+      "value": "49",
+      "label": "Tỉnh Quảng Nam",
+      "region": "central",
+      "sort": 47
+    },
+    {
+      "value": "51",
+      "label": "Tỉnh Quảng Ngãi",
+      "region": "central",
+      "sort": 48
+    },
+    {
+      "value": "22",
+      "label": "Tỉnh Quảng Ninh",
+      "region": "north",
+      "sort": 49
+    },
+    {
+      "value": "45",
+      "label": "Tỉnh Quảng Trị",
+      "region": "central",
+      "sort": 50
+    },
+    {
+      "value": "94",
+      "label": "Tỉnh Sóc Trăng",
+      "region": "south",
+      "sort": 51
+    },
+    {
+      "value": "14",
+      "label": "Tỉnh Sơn La",
+      "region": "north",
+      "sort": 52
+    },
+    {
+      "value": "38",
+      "label": "Tỉnh Thanh Hóa",
+      "region": "central",
+      "sort": 53
+    },
+    {
+      "value": "34",
+      "label": "Tỉnh Thái Bình",
+      "region": "north",
+      "sort": 54
+    },
+    {
+      "value": "19",
+      "label": "Tỉnh Thái Nguyên",
+      "region": "north",
+      "sort": 55
+    },
+    {
+      "value": "46",
+      "label": "Tỉnh Thừa Thiên Huế",
+      "region": "central",
+      "sort": 56
+    },
+    {
+      "value": "82",
+      "label": "Tỉnh Tiền Giang",
+      "region": "south",
+      "sort": 57
+    },
+    {
+      "value": "84",
+      "label": "Tỉnh Trà Vinh",
+      "region": "south",
+      "sort": 58
+    },
+    {
+      "value": "8",
+      "label": "Tỉnh Tuyên Quang",
+      "region": "north",
+      "sort": 59
+    },
+    {
+      "value": "72",
+      "label": "Tỉnh Tây Ninh",
+      "region": "south",
+      "sort": 60
+    },
+    {
+      "value": "86",
+      "label": "Tỉnh Vĩnh Long",
+      "region": "south",
+      "sort": 61
+    },
+    {
+      "value": "26",
+      "label": "Tỉnh Vĩnh Phúc",
+      "region": "north",
+      "sort": 62
+    },
+    {
+      "value": "15",
+      "label": "Tỉnh Yên Bái",
+      "region": "north",
+      "sort": 63
+    }
+  ]
+  

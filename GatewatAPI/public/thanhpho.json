@@ -1,0 +1,883 @@
+[{
+  "id": "1",
+  "erpId": null,
+  "name": "Thành Phố Hà Nội",
+  "region": "north",
+  "sort": 1,
+  "mapping": {
+    "tamanh_hn": "101",
+    "tamanh_hcm": "101",
+    "tamanh_tsn": "101",
+    "tamanh_tsn_splunk": "156",
+    "vnvc": "1"
+  }
+},
+{
+  "id": "79",
+  "erpId": null,
+  "name": "Thành Phố Hồ Chí Minh",
+  "region": "south",
+  "sort": 2,
+  "mapping": {
+    "tamanh_hn": "701",
+    "tamanh_hcm": "701",
+    "tamanh_tsn": "701",
+    "tamanh_tsn_splunk": "2",
+    "vnvc": "79"
+  }
+},
+{
+  "id": "48",
+  "erpId": null,
+  "name": "Thành Phố Đà Nẵng",
+  "region": "central",
+  "sort": 3,
+  "mapping": {
+    "tamanh_hn": "501",
+    "tamanh_hcm": "501",
+    "tamanh_tsn": "501",
+    "tamanh_tsn_splunk": "121",
+    "vnvc": "48"
+  }
+},
+{
+  "id": "31",
+  "erpId": null,
+  "name": "Thành Phố Hải Phòng",
+  "region": "north",
+  "sort": 4,
+  "mapping": {
+    "tamanh_hn": "103",
+    "tamanh_hcm": "103",
+    "tamanh_tsn": "103",
+    "tamanh_tsn_splunk": "119",
+    "vnvc": "31"
+  }
+},
+{
+  "id": "92",
+  "erpId": null,
+  "name": "Thành Phố Cần Thơ",
+  "region": "south",
+  "sort": 5,
+  "mapping": {
+    "tamanh_hn": "815",
+    "tamanh_hcm": "815",
+    "tamanh_tsn": "815",
+    "tamanh_tsn_splunk": "132",
+    "vnvc": "92"
+  }
+},
+{
+  "id": "89",
+  "erpId": null,
+  "name": "Tỉnh An Giang",
+  "region": "south",
+  "sort": 6,
+  "mapping": {
+    "tamanh_hn": "805",
+    "tamanh_hcm": "805",
+    "tamanh_tsn": "805",
+    "tamanh_tsn_splunk": "154",
+    "vnvc": "89"
+  }
+},
+{
+  "id": "77",
+  "erpId": null,
+  "name": "Tỉnh Bà Rịa - Vũng Tàu",
+  "region": "south",
+  "sort": 7,
+  "mapping": {
+    "tamanh_hn": "717",
+    "tamanh_hcm": "717",
+    "tamanh_tsn": "717",
+    "tamanh_tsn_splunk": "125",
+    "vnvc": "77"
+  }
+},
+{
+  "id": "74",
+  "erpId": null,
+  "name": "Tỉnh Bình Dương",
+  "region": "south",
+  "sort": 8,
+  "mapping": {
+    "tamanh_hn": "711",
+    "tamanh_hcm": "711",
+    "tamanh_tsn": "711",
+    "tamanh_tsn_splunk": "112",
+    "vnvc": "74"
+  }
+},
+{
+  "id": "70",
+  "erpId": null,
+  "name": "Tỉnh Bình Phước",
+  "region": "south",
+  "sort": 9,
+  "mapping": {
+    "tamanh_hn": "707",
+    "tamanh_hcm": "707",
+    "tamanh_tsn": "707",
+    "tamanh_tsn_splunk": "159",
+    "vnvc": "70"
+  }
+},
+{
+  "id": "60",
+  "erpId": null,
+  "name": "Tỉnh Bình Thuận",
+  "region": "central",
+  "sort": 10,
+  "mapping": {
+    "tamanh_hn": "715",
+    "tamanh_hcm": "715",
+    "tamanh_tsn": "715",
+    "tamanh_tsn_splunk": "116",
+    "vnvc": "60"
+  }
+},
+{
+  "id": "52",
+  "erpId": null,
+  "name": "Tỉnh Bình Định",
+  "region": "central",
+  "sort": 11,
+  "mapping": {
+    "tamanh_hn": "507",
+    "tamanh_hcm": "507",
+    "tamanh_tsn": "507",
+    "tamanh_tsn_splunk": "141",
+    "vnvc": "52"
+  }
+},
+{
+  "id": "95",
+  "erpId": null,
+  "name": "Tỉnh Bạc Liêu",
+  "region": "south",
+  "sort": 12,
+  "mapping": {
+    "tamanh_hn": "821",
+    "tamanh_hcm": "821",
+    "tamanh_tsn": "821",
+    "tamanh_tsn_splunk": "149",
+    "vnvc": "95"
+  }
+},
+{
+  "id": "24",
+  "erpId": null,
+  "name": "Tỉnh Bắc Giang",
+  "region": "north",
+  "sort": 13,
+  "mapping": {
+    "tamanh_hn": "221",
+    "tamanh_hcm": "221",
+    "tamanh_tsn": "221",
+    "tamanh_tsn_splunk": "122",
+    "vnvc": "24"
+  }
+},
+{
+  "id": "6",
+  "erpId": null,
+  "name": "Tỉnh Bắc Kạn",
+  "region": "north",
+  "sort": 14,
+  "mapping": {
+    "tamanh_hn": "207",
+    "tamanh_hcm": "207",
+    "tamanh_tsn": "207",
+    "tamanh_tsn_splunk": "126",
+    "vnvc": "6"
+  }
+},
+{
+  "id": "27",
+  "erpId": null,
+  "name": "Tỉnh Bắc Ninh",
+  "region": "north",
+  "sort": 15,
+  "mapping": {
+    "tamanh_hn": "223",
+    "tamanh_hcm": "223",
+    "tamanh_tsn": "223",
+    "tamanh_tsn_splunk": "139",
+    "vnvc": "27"
+  }
+},
+{
+  "id": "83",
+  "erpId": null,
+  "name": "Tỉnh Bến Tre",
+  "region": "south",
+  "sort": 16,
+  "mapping": {
+    "tamanh_hn": "811",
+    "tamanh_hcm": "811",
+    "tamanh_tsn": "811",
+    "tamanh_tsn_splunk": "107",
+    "vnvc": "83"
+  }
+},
+{
+  "id": "4",
+  "erpId": null,
+  "name": "Tỉnh Cao Bằng",
+  "region": "north",
+  "sort": 17,
+  "mapping": {
+    "tamanh_hn": "203",
+    "tamanh_hcm": "203",
+    "tamanh_tsn": "203",
+    "tamanh_tsn_splunk": "128",
+    "vnvc": "4"
+  }
+},
+{
+  "id": "96",
+  "erpId": null,
+  "name": "Tỉnh Cà Mau",
+  "region": "south",
+  "sort": 18,
+  "mapping": {
+    "tamanh_hn": "823",
+    "tamanh_hcm": "823",
+    "tamanh_tsn": "823",
+    "tamanh_tsn_splunk": "148",
+    "vnvc": "96"
+  }
+},
+{
+  "id": "11",
+  "erpId": null,
+  "name": "Tỉnh Điện Biên",
+  "region": "north",
+  "sort": 19,
+  "mapping": {
+    "tamanh_hn": "306",
+    "tamanh_hcm": "306",
+    "tamanh_tsn": "306",
+    "tamanh_tsn_splunk": "146",
+    "vnvc": "11"
+  }
+},
+{
+  "id": "66",
+  "erpId": null,
+  "name": "Tỉnh Đắk Lắk",
+  "region": "central",
+  "sort": 20,
+  "mapping": {
+    "tamanh_hn": "605",
+    "tamanh_hcm": "605",
+    "tamanh_tsn": "605",
+    "tamanh_tsn_splunk": "133",
+    "vnvc": "66"
+  }
+},
+{
+  "id": "67",
+  "erpId": null,
+  "name": "Tỉnh Đắk Nông",
+  "region": "central",
+  "sort": 21,
+  "mapping": {
+    "tamanh_hn": "606",
+    "tamanh_hcm": "606",
+    "tamanh_tsn": "606",
+    "tamanh_tsn_splunk": "135",
+    "vnvc": "67"
+  }
+},
+{
+  "id": "75",
+  "erpId": null,
+  "name": "Tỉnh Đồng Nai",
+  "region": "south",
+  "sort": 22,
+  "mapping": {
+    "tamanh_hn": "713",
+    "tamanh_hcm": "713",
+    "tamanh_tsn": "713",
+    "tamanh_tsn_splunk": "143",
+    "vnvc": "75"
+  }
+},
+{
+  "id": "87",
+  "erpId": null,
+  "name": "Tỉnh Đồng Tháp",
+  "region": "south",
+  "sort": 23,
+  "mapping": {
+    "tamanh_hn": "803",
+    "tamanh_hcm": "803",
+    "tamanh_tsn": "803",
+    "tamanh_tsn_splunk": "129",
+    "vnvc": "87"
+  }
+},
+{
+  "id": "64",
+  "erpId": null,
+  "name": "Tỉnh Gia Lai",
+  "region": "central",
+  "sort": 24,
+  "mapping": {
+    "tamanh_hn": "603",
+    "tamanh_hcm": "603",
+    "tamanh_tsn": "603",
+    "tamanh_tsn_splunk": "101",
+    "vnvc": "64"
+  }
+},
+{
+  "id": "2",
+  "erpId": null,
+  "name": "Tỉnh Hà Giang",
+  "region": "north",
+  "sort": 25,
+  "mapping": {
+    "tamanh_hn": "201",
+    "tamanh_hcm": "201",
+    "tamanh_tsn": "201",
+    "tamanh_tsn_splunk": "155",
+    "vnvc": "2"
+  }
+},
+{
+  "id": "35",
+  "erpId": null,
+  "name": "Tỉnh Hà Nam",
+  "region": "north",
+  "sort": 26,
+  "mapping": {
+    "tamanh_hn": "111",
+    "tamanh_hcm": "111",
+    "tamanh_tsn": "111",
+    "tamanh_tsn_splunk": "124",
+    "vnvc": "35"
+  }
+},
+{
+  "id": "42",
+  "erpId": null,
+  "name": "Tỉnh Hà Tĩnh",
+  "region": "central",
+  "sort": 27,
+  "mapping": {
+    "tamanh_hn": "405",
+    "tamanh_hcm": "405",
+    "tamanh_tsn": "405",
+    "tamanh_tsn_splunk": "134",
+    "vnvc": "42"
+  }
+},
+{
+  "id": "17",
+  "erpId": null,
+  "name": "Tỉnh Hòa Bình",
+  "region": "north",
+  "sort": 28,
+  "mapping": {
+    "tamanh_hn": "305",
+    "tamanh_hcm": "305",
+    "tamanh_tsn": "305",
+    "tamanh_tsn_splunk": "131",
+    "vnvc": "17"
+  }
+},
+{
+  "id": "33",
+  "erpId": null,
+  "name": "Tỉnh Hưng Yên",
+  "region": "north",
+  "sort": 29,
+  "mapping": {
+    "tamanh_hn": "109",
+    "tamanh_hcm": "109",
+    "tamanh_tsn": "109",
+    "tamanh_tsn_splunk": "160",
+    "vnvc": "33"
+  }
+},
+{
+  "id": "30",
+  "erpId": null,
+  "name": "Tỉnh Hải Dương",
+  "region": "north",
+  "sort": 30,
+  "mapping": {
+    "tamanh_hn": "107",
+    "tamanh_hcm": "107",
+    "tamanh_tsn": "107",
+    "tamanh_tsn_splunk": "162",
+    "vnvc": "30"
+  }
+},
+{
+  "id": "93",
+  "erpId": null,
+  "name": "Tỉnh Hậu Giang",
+  "region": "south",
+  "sort": 31,
+  "mapping": {
+    "tamanh_hn": "824",
+    "tamanh_hcm": "824",
+    "tamanh_tsn": "824",
+    "tamanh_tsn_splunk": "118",
+    "vnvc": "93"
+  }
+},
+{
+  "id": "56",
+  "erpId": null,
+  "name": "Tỉnh Khánh Hòa",
+  "region": "central",
+  "sort": 32,
+  "mapping": {
+    "tamanh_hn": "511",
+    "tamanh_hcm": "511",
+    "tamanh_tsn": "511",
+    "tamanh_tsn_splunk": "153",
+    "vnvc": "56"
+  }
+},
+{
+  "id": "91",
+  "erpId": null,
+  "name": "Tỉnh Kiên Giang",
+  "region": "south",
+  "sort": 33,
+  "mapping": {
+    "tamanh_hn": "813",
+    "tamanh_hcm": "813",
+    "tamanh_tsn": "813",
+    "tamanh_tsn_splunk": "127",
+    "vnvc": "91"
+  }
+},
+{
+  "id": "62",
+  "erpId": null,
+  "name": "Tỉnh Kon Tum",
+  "region": "central",
+  "sort": 34,
+  "mapping": {
+    "tamanh_hn": "601",
+    "tamanh_hcm": "601",
+    "tamanh_tsn": "601",
+    "tamanh_tsn_splunk": "151",
+    "vnvc": "62"
+  }
+},
+{
+  "id": "12",
+  "erpId": null,
+  "name": "Tỉnh Lai Châu",
+  "region": "north",
+  "sort": 35,
+  "mapping": {
+    "tamanh_hn": "301",
+    "tamanh_hcm": "301",
+    "tamanh_tsn": "301",
+    "tamanh_tsn_splunk": "111",
+    "vnvc": "12"
+  }
+},
+{
+  "id": "80",
+  "erpId": null,
+  "name": "Tỉnh Long An",
+  "region": "south",
+  "sort": 36,
+  "mapping": {
+    "tamanh_hn": "801",
+    "tamanh_hcm": "801",
+    "tamanh_tsn": "801",
+    "tamanh_tsn_splunk": "115",
+    "vnvc": "80"
+  }
+},
+{
+  "id": "10",
+  "erpId": null,
+  "name": "Tỉnh Lào Cai",
+  "region": "north",
+  "sort": 37,
+  "mapping": {
+    "tamanh_hn": "205",
+    "tamanh_hcm": "205",
+    "tamanh_tsn": "205",
+    "tamanh_tsn_splunk": "137",
+    "vnvc": "10"
+  }
+},
+{
+  "id": "68",
+  "erpId": null,
+  "name": "Tỉnh Lâm Đồng",
+  "region": "central",
+  "sort": 38,
+  "mapping": {
+    "tamanh_hn": "703",
+    "tamanh_hcm": "703",
+    "tamanh_tsn": "703",
+    "tamanh_tsn_splunk": "147",
+    "vnvc": "68"
+  }
+},
+{
+  "id": "20",
+  "erpId": null,
+  "name": "Tỉnh Lạng Sơn",
+  "region": "north",
+  "sort": 39,
+  "mapping": {
+    "tamanh_hn": "209",
+    "tamanh_hcm": "209",
+    "tamanh_tsn": "209",
+    "tamanh_tsn_splunk": "145",
+    "vnvc": "20"
+  }
+},
+{
+  "id": "36",
+  "erpId": null,
+  "name": "Tỉnh Nam Định",
+  "region": "north",
+  "sort": 40,
+  "mapping": {
+    "tamanh_hn": "113",
+    "tamanh_hcm": "113",
+    "tamanh_tsn": "113",
+    "tamanh_tsn_splunk": "157",
+    "vnvc": "36"
+  }
+},
+{
+  "id": "40",
+  "erpId": null,
+  "name": "Tỉnh Nghệ An",
+  "region": "central",
+  "sort": 41,
+  "mapping": {
+    "tamanh_hn": "403",
+    "tamanh_hcm": "403",
+    "tamanh_tsn": "403",
+    "tamanh_tsn_splunk": "136",
+    "vnvc": "40"
+  }
+},
+{
+  "id": "37",
+  "erpId": null,
+  "name": "Tỉnh Ninh Bình",
+  "region": "north",
+  "sort": 42,
+  "mapping": {
+    "tamanh_hn": "117",
+    "tamanh_hcm": "117",
+    "tamanh_tsn": "117",
+    "tamanh_tsn_splunk": "103",
+    "vnvc": "37"
+  }
+},
+{
+  "id": "58",
+  "erpId": null,
+  "name": "Tỉnh Ninh Thuận",
+  "region": "central",
+  "sort": 43,
+  "mapping": {
+    "tamanh_hn": "705",
+    "tamanh_hcm": "705",
+    "tamanh_tsn": "705",
+    "tamanh_tsn_splunk": "120",
+    "vnvc": "58"
+  }
+},
+{
+  "id": "25",
+  "erpId": null,
+  "name": "Tỉnh Phú Thọ",
+  "region": "north",
+  "sort": 44,
+  "mapping": {
+    "tamanh_hn": "217",
+    "tamanh_hcm": "217",
+    "tamanh_tsn": "217",
+    "tamanh_tsn_splunk": "114",
+    "vnvc": "25"
+  }
+},
+{
+  "id": "54",
+  "erpId": null,
+  "name": "Tỉnh Phú Yên",
+  "region": "central",
+  "sort": 45,
+  "mapping": {
+    "tamanh_hn": "509",
+    "tamanh_hcm": "509",
+    "tamanh_tsn": "509",
+    "tamanh_tsn_splunk": "117",
+    "vnvc": "54"
+  }
+},
+{
+  "id": "44",
+  "erpId": null,
+  "name": "Tỉnh Quảng Bình",
+  "region": "central",
+  "sort": 46,
+  "mapping": {
+    "tamanh_hn": "407",
+    "tamanh_hcm": "407",
+    "tamanh_tsn": "407",
+    "tamanh_tsn_splunk": "163",
+    "vnvc": "44"
+  }
+},
+{
+  "id": "49",
+  "erpId": null,
+  "name": "Tỉnh Quảng Nam",
+  "region": "central",
+  "sort": 47,
+  "mapping": {
+    "tamanh_hn": "503",
+    "tamanh_hcm": "503",
+    "tamanh_tsn": "503",
+    "tamanh_tsn_splunk": "108",
+    "vnvc": "49"
+  }
+},
+{
+  "id": "51",
+  "erpId": null,
+  "name": "Tỉnh Quảng Ngãi",
+  "region": "central",
+  "sort": 48,
+  "mapping": {
+    "tamanh_hn": "505",
+    "tamanh_hcm": "505",
+    "tamanh_tsn": "505",
+    "tamanh_tsn_splunk": "130",
+    "vnvc": "51"
+  }
+},
+{
+  "id": "22",
+  "erpId": null,
+  "name": "Tỉnh Quảng Ninh",
+  "region": "north",
+  "sort": 49,
+  "mapping": {
+    "tamanh_hn": "225",
+    "tamanh_hcm": "225",
+    "tamanh_tsn": "225",
+    "tamanh_tsn_splunk": "142",
+    "vnvc": "22"
+  }
+},
+{
+  "id": "45",
+  "erpId": null,
+  "name": "Tỉnh Quảng Trị",
+  "region": "central",
+  "sort": 50,
+  "mapping": {
+    "tamanh_hn": "409",
+    "tamanh_hcm": "409",
+    "tamanh_tsn": "409",
+    "tamanh_tsn_splunk": "161",
+    "vnvc": "45"
+  }
+},
+{
+  "id": "94",
+  "erpId": null,
+  "name": "Tỉnh Sóc Trăng",
+  "region": "south",
+  "sort": 51,
+  "mapping": {
+    "tamanh_hn": "819",
+    "tamanh_hcm": "819",
+    "tamanh_tsn": "819",
+    "tamanh_tsn_splunk": "106",
+    "vnvc": "94"
+  }
+},
+{
+  "id": "14",
+  "erpId": null,
+  "name": "Tỉnh Sơn La",
+  "region": "north",
+  "sort": 52,
+  "mapping": {
+    "tamanh_hn": "303",
+    "tamanh_hcm": "303",
+    "tamanh_tsn": "303",
+    "tamanh_tsn_splunk": "138",
+    "vnvc": "14"
+  }
+},
+{
+  "id": "38",
+  "erpId": null,
+  "name": "Tỉnh Thanh Hóa",
+  "region": "north",
+  "sort": 53,
+  "mapping": {
+    "tamanh_hn": "401",
+    "tamanh_hcm": "401",
+    "tamanh_tsn": "401",
+    "tamanh_tsn_splunk": "110",
+    "vnvc": "38"
+  }
+},
+{
+  "id": "34",
+  "erpId": null,
+  "name": "Tỉnh Thái Bình",
+  "region": "north",
+  "sort": 54,
+  "mapping": {
+    "tamanh_hn": "115",
+    "tamanh_hcm": "115",
+    "tamanh_tsn": "115",
+    "tamanh_tsn_splunk": "105",
+    "vnvc": "34"
+  }
+},
+{
+  "id": "19",
+  "erpId": null,
+  "name": "Tỉnh Thái Nguyên",
+  "region": "north",
+  "sort": 55,
+  "mapping": {
+    "tamanh_hn": "215",
+    "tamanh_hcm": "215",
+    "tamanh_tsn": "215",
+    "tamanh_tsn_splunk": "152",
+    "vnvc": "19"
+  }
+},
+{
+  "id": "46",
+  "erpId": null,
+  "name": "Tỉnh Thừa Thiên Huế",
+  "region": "central",
+  "sort": 56,
+  "mapping": {
+    "tamanh_hn": "411",
+    "tamanh_hcm": "411",
+    "tamanh_tsn": "411",
+    "tamanh_tsn_splunk": "140",
+    "vnvc": "46"
+  }
+},
+{
+  "id": "82",
+  "erpId": null,
+  "name": "Tỉnh Tiền Giang",
+  "region": "south",
+  "sort": 57,
+  "mapping": {
+    "tamanh_hn": "807",
+    "tamanh_hcm": "807",
+    "tamanh_tsn": "807",
+    "tamanh_tsn_splunk": "158",
+    "vnvc": "82"
+  }
+},
+{
+  "id": "84",
+  "erpId": null,
+  "name": "Tỉnh Trà Vinh",
+  "region": "south",
+  "sort": 58,
+  "mapping": {
+    "tamanh_hn": "817",
+    "tamanh_hcm": "817",
+    "tamanh_tsn": "817",
+    "tamanh_tsn_splunk": "150",
+    "vnvc": "84"
+  }
+},
+{
+  "id": "8",
+  "erpId": null,
+  "name": "Tỉnh Tuyên Quang",
+  "region": "north",
+  "sort": 59,
+  "mapping": {
+    "tamanh_hn": "211",
+    "tamanh_hcm": "211",
+    "tamanh_tsn": "211",
+    "tamanh_tsn_splunk": "113",
+    "vnvc": "8"
+  }
+},
+{
+  "id": "72",
+  "erpId": null,
+  "name": "Tỉnh Tây Ninh",
+  "region": "south",
+  "sort": 60,
+  "mapping": {
+    "tamanh_hn": "709",
+    "tamanh_hcm": "709",
+    "tamanh_tsn": "709",
+    "tamanh_tsn_splunk": "144",
+    "vnvc": "72"
+  }
+},
+{
+  "id": "86",
+  "erpId": null,
+  "name": "Tỉnh Vĩnh Long",
+  "region": "south",
+  "sort": 61,
+  "mapping": {
+    "tamanh_hn": "809",
+    "tamanh_hcm": "809",
+    "tamanh_tsn": "809",
+    "tamanh_tsn_splunk": "109",
+    "vnvc": "86"
+  }
+},
+{
+  "id": "26",
+  "erpId": null,
+  "name": "Tỉnh Vĩnh Phúc",
+  "region": "north",
+  "sort": 62,
+  "mapping": {
+    "tamanh_hn": "104",
+    "tamanh_hcm": "104",
+    "tamanh_tsn": "104",
+    "tamanh_tsn_splunk": "104",
+    "vnvc": "26"
+  }
+},
+{
+  "id": "15",
+  "erpId": null,
+  "name": "Tỉnh Yên Bái",
+  "region": "north",
+  "sort": 63,
+  "mapping": {
+    "tamanh_hn": "213",
+    "tamanh_hcm": "213",
+    "tamanh_tsn": "213",
+    "tamanh_tsn_splunk": "123",
+    "vnvc": "15"
+  }
+}
+]

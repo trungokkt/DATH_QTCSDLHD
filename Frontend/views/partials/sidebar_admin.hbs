@@ -1,0 +1,62 @@
+<div class="sidebar" data-color="rose" data-background-color="black" data-image="/img/sidebar-1.jpg">
+  <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+  <div class="logo">
+    <a href="http://www.creative-tim.com/" class="simple-text logo-mini">
+      CT
+    </a>
+    <a href="http://www.creative-tim.com/" class="simple-text logo-normal">
+      Creative Tim
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <div class="user">
+      <div class="photo">
+        <img src="/img/faces/avatar.jpg" />
+      </div>
+      <div class="user-info">
+        <a data-toggle="collapse" href="#collapseExample" class="username">
+          <span>
+            Admin
+            <b class="caret"></b>
+          </span>
+        </a>
+
+      </div>
+    </div>
+    <ul class="nav">
+      <li class="nav-item" id="user">
+        <a class="nav-link" href="/admin/user">
+          <i class="material-icons">app_registration</i>
+          <p> Khách Hàng </p>
+        </a>
+      </li>
+      <li class="nav-item" id="product">
+        <a class="nav-link" href="/admin/product">
+          <i class="material-icons">vaccines</i>
+          <p> Sản phẩm </p>
+        </a>
+      </li>
+
+      {{#if_eq user_type 3}}
+      <li class="nav-item" id="employee">
+        <a class="nav-link" href="/admin/employee">
+          <i class="material-icons">group</i>
+          <p> Nhân Viên </p>
+        </a>
+      </li>
+      {{/if_eq}}
+    </ul>
+
+
+  </div>
+</div>
+<script>
+  var currentLocation = window.location;
+  var params = currentLocation.pathname.slice(1).split("/")
+  document.getElementById(params[1]).classList.add("active")
+
+</script>
