@@ -8,6 +8,7 @@ const redis = require('redis');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 var config = require('./config')
+console.log(process.env.REDIS_HOST)
 
 const redisClient = redis.createClient(config.redis.options);
 (async () => {
@@ -20,6 +21,7 @@ redisClient.on('ready', () => {
 });
 
 config.redis.client = redisClient;
+
 //connect mongo
 require("./db/db_mongo");
 var basketRouter = require('./routes/basket');

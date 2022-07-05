@@ -64,7 +64,8 @@
                                             <td>
                                                 {{#each orderItem}}
                                                 <div class="person" id="person{{_id}}">
-                                                    <a href="#" data-toggle="modal" data-target="#modalOrderItem"
+                                                    <a href="#" id="click_{{_id}}" data-toggle="modal"
+                                                        data-target="#modalOrderItem"
                                                         data-whatever="{{json this}}">{{name}}</a>
                                                     <a href="#" onclick="deleteOrderItem('{{_id}}')"><i
                                                             class="material-icons">close</i></a>
@@ -134,6 +135,7 @@
                                     <th>Tên Vaccine</th>
                                     <th>Giá</th>
                                     <th>Ngày hẹn</th>
+                                    <th>Địa chỉ tiêm</th>
                                     <th>Tình trạng</th>
                                     <th></th>
                                 </tr>
@@ -151,7 +153,12 @@
 {{>script}}
 
 <script>
+    var refresh_data = false
     $(document).ready(function () {
+        $(function () {
+            console.log(location.hash)
+            $(location.hash).click()
+        });
         $('#datatables').DataTable({
             "pagingType": "full_numbers",
             "lengthMenu": [
@@ -178,6 +185,7 @@
         });
 
         $('#modalOrderItem').on('show.bs.modal', function (event) {
+
             var button = $(event.relatedTarget) // Button that triggered the modal
             var recipient = button.data('whatever') // Extract info from data-* attributes
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -186,6 +194,7 @@
             modal.find("#items").empty()
             console.log(recipient)
             modal.find(".card-header").html(`<h3>${recipient.name}</h3>`)
+
             for (const key in recipient.items) {
                 const element = recipient.items[key]
                 modal.find("#items").append(`
@@ -194,12 +203,13 @@
                                     <td>${formatMoney(element.price)}</td>
                                     <td style="display: flex; align-items: center;">
                                          <div class="form-group">
-                                            <input type="text" class="form-control datetimepicker" value="${element.injectTime? date2str(new Date(element.injectTime), 'MM/dd/yyyy hh:ss') :''}">
+                                            <input type="text" class="form-control datetimepicker" id="inject_${recipient._id}_${element.vaccine._id}" value="${element.injectionTime ? date2str(new Date(element.injectionTime), 'MM/dd/yyyy hh:ss') : ''}">
                                         </div>
-                                        <a href="#" onclick=""><i class="material-icons">done</i></a>
+                                        <button class="btn btn-link btn-primary btn-just-icon" onclick="setInjectTime('${recipient._id}','${element.vaccine._id}')"><i class="material-icons">done</i></button>
                                     </td>
+                                    <td>${recipient.addressVNCVC}</td>
                                     <td>${element.isInject ? "Đã tiêm" : "Chưa tiêm"}</td>
-                                    <td><a href="#" onclick="deleteOrderItemProduct('${recipient._id}','${element.vaccine._id}')"><i class="material-icons">close</i></a></td>
+                                    <td><button class="btn btn-link btn-primary btn-just-icon" onclick="deleteOrderItemProduct('${recipient._id}','${element.vaccine._id}')"><i class="material-icons">close</i></button></td>
                                 </tr>
                 `)
             }
@@ -216,21 +226,33 @@
                     close: 'fa fa-remove'
                 }
             });
+
         })
+        $("#modalOrderItem").on("hidden.bs.modal", function () {
+            // put your default event here
+            if(refresh_data){
+                location.reload();
+                refresh_data=false;
+            }
+        });
         if ($('.slider').length != 0) {
             md.initSliders();
         }
     });
     function deleteOrderItemProduct(orderItemId, vaccineId) {
-        $.ajax({
-            url: "/admin/order/delete/orderItem/product",
-            type: "delete",
-            data: { orderItemId: orderItemId, vaccineId: vaccineId },
-            success: function (res) {
-                $("#item" + vaccineId).remove()
-            }
+        var check = confirm("Bạn muốn xoá vaccine")
+        if (check) {
+            $.ajax({
+                url: "/admin/order/delete/orderItem/product",
+                type: "delete",
+                data: { orderItemId: orderItemId, vaccineId: vaccineId },
+                success: function (res) {
+                    $("#item"+vaccineId).remove()
+                    refresh_data = true;
+                }
 
-        })
+            })
+        }
     }
     function date2str(x, y) {
         var z = {
@@ -249,14 +271,35 @@
         });
     }
     function deleteOrderItem(orderItemId) {
+        var check = confirm("Bạn muốn xoá orderItem")
+        if (check) {
+            $.ajax({
+                url: "/admin/order/delete/orderItem",
+                type: "delete",
+                data: { _id: orderItemId },
+                success: function (res) {
+                    location.reload();          
+                }
+
+            })
+        }
+    }
+    function setInjectTime(orderItemId, vaccineId) {
+        const injectTime = $(`#inject_${orderItemId}_${vaccineId}`).val()
+
+        if (!injectTime) {
+            return alert("Vui lòng nhập ngày tiêm");
+        }
         $.ajax({
-            url: "/admin/order/delete/orderItem",
-            type: "delete",
-            data: { _id: orderItemId },
+            url: "/admin/order/inject-time",
+            type: "post",
+            data: { orderItemId: orderItemId, vaccineId: vaccineId, inJectTime: new Date(injectTime) },
             success: function (res) {
-                $("#person" + orderItemId).remove()
+                alert("Thêm thành công");
+                refresh_data = true
             }
 
         })
     }
+
 </script>

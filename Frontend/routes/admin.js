@@ -10,5 +10,6 @@ router.post("/product", auth, authAdmin, adminController.createProduct);
 router.post("/product/update", auth, authAdmin, adminController.updateProduct);
 router.delete("/order/delete/orderItem", auth, authAdmin, adminController.deleteOrderItem);
 router.delete("/order/delete/orderItem/product", auth, authAdmin, adminController.deleteOrderItemProduct);
+router.post("/order/inject-time", auth, authAdmin, adminController.setInjectTime);
 
 module.exports = router;

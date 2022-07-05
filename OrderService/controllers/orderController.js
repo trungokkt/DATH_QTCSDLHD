@@ -5,7 +5,6 @@ const OrderItem = require("../models/OrderItem");
 //const Token = require("../models/Token");
 //const sendEmail = require("../middleware/email");
 //var config = require('../db/config');
-const axios = require('axios');
 const Vaccine = require("../models/Vaccine");
 module.exports = {
     createOrder: async function (req, res, next) {
@@ -101,6 +100,24 @@ module.exports = {
             await vaccine.save()
             await order.save()
             await orderItem.save();
+            res.send(orderItem)
+        } catch (error) {
+            res.status(401).send(error);
+        }
+    },
+    setInjectTime: async function (req, res, next) {
+        try {
+            const { orderItemId, vaccineId ,inJectTime } = req.body;
+            console.log(req.body)
+
+            const orderItem = await OrderItem.findById(orderItemId)
+
+            const index = orderItem.items.findIndex((e) => e.vaccine == vaccineId)
+           
+
+            orderItem.items[index].injectionTime = inJectTime
+            await orderItem.save();
+            
             res.send(orderItem)
         } catch (error) {
             res.status(401).send(error);

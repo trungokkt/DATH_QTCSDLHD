@@ -190,8 +190,26 @@ const APIService = {
                 "Authorization": Authorization
             },
             data: {
-                orderItemId:orderItemId,
-                vaccineId:vaccineId
+                orderItemId: orderItemId,
+                vaccineId: vaccineId
+            }
+        })
+        return result.data
+    },
+    setInjectTime: async (orderItemId, vaccineId, inJectTime, token) => {
+        const Authorization = "Bearer " + token
+        console.log(inJectTime)
+        const result = await axios({
+            url: `${host}/order/inject-time`,
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": Authorization
+            },
+            data: {
+                orderItemId: orderItemId,
+                vaccineId: vaccineId,
+                inJectTime: inJectTime
             }
         })
         return result.data

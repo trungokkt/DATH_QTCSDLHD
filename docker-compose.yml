@@ -1,0 +1,136 @@
+version: "3"
+services:
+  cartservice:
+    container_name: cartservice
+    image: cartservice
+    depends_on:
+      - redis
+    build: ./CartService
+    ports:
+      - "3004:3004"
+    networks:
+      - app-tier
+    environment:
+      REDIS_HOST: redis
+      MONGODB_URL: mongodb://mongo4/CSDLHD_DATH?readPreference=primary&directConnection=true&ssl=false
+      CASSANDRA_HOST: cassandra2
+    links:
+      - mongo
+      - cassandra
+      - redis
+  customerservice:
+    container_name: customerservice
+    image: customerservice
+    depends_on:
+      - cassandra
+    build: ./CustomerService
+    ports:
+      - "3003:3003"
+    networks:
+      - app-tier
+    environment:
+      REDIS_HOST: redis
+      MONGODB_URL: mongodb://mongo4/CSDLHD_DATH?readPreference=primary&directConnection=true&ssl=false
+      CASSANDRA_HOST: cassandra2
+    links:
+      - mongo
+      - cassandra
+      - redis 
+  orderservice:
+    container_name: orderservice
+    image: orderservice
+    depends_on:
+      - mongo
+      - cartservice
+      - customerservice
+    build: ./OrderService
+    ports:
+      - "3002:3002"
+    networks:
+      - app-tier
+    environment:
+      REDIS_HOST: redis
+      MONGODB_URL: mongodb://mongo4/CSDLHD_DATH?readPreference=primary&directConnection=true&ssl=false
+      CASSANDRA_HOST: cassandra2
+    links:
+      - mongo
+      - cassandra
+      - redis
+  gatewatapi:
+    container_name: gatewatapi
+    image: gatewatapi
+    build: ./GatewatAPI
+    ports:
+      - "8000:8000"
+    networks:
+      - app-tier
+    depends_on:
+      - cartservice
+      - orderservice
+      - customerservice
+    environment:
+      REDIS_HOST: redis
+      MONGODB_URL: mongodb://mongo4/CSDLHD_DATH?readPreference=primary&directConnection=true&ssl=false
+      CASSANDRA_HOST: cassandra2
+    links:
+      - mongo
+      - cassandra
+      - redis
+      - cartservice
+      - orderservice
+      - customerservice
+  frontend:
+    container_name: frontend
+    image: frontend
+    build: ./Frontend
+    ports:
+      - "8080:8080"
+    networks:
+      - app-tier
+    depends_on:
+      - gatewatapi
+    environment:
+      REDIS_HOST: redis
+      MONGODB_URL: mongodb://mongo4/CSDLHD_DATH?readPreference=primary&directConnection=true&ssl=false
+      CASSANDRA_HOST: cassandra2
+    links:
+      - gatewatapi
+  mongo:
+    container_name: mongo4
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '27017:27017'
+    networks:
+      - app-tier
+  cassandra:
+    container_name: cassandra2
+    image: cassandra:latest
+    ports:
+      - "7199:7199" # JMX
+      - "7000:7000" # cluster communication
+      - "7001:7001" # cluster communication (SSL)
+      - "9042:9042" # native protocol clients
+      - "9160:9160" # thrift clients
+    networks:
+      - app-tier
+    volumes:
+      - ./cassandra/config/collectd.cassandra.conf:/etc/collectd/collectd.conf
+      - ./cassandra/config/graphite.cassandra.yaml:/etc/cassandra/graphite.yaml
+      - ./cassandra/config/filebeat.yml:/etc/filebeat/filebeat.yml
+      - ./cassandra/config/prometheus.yml:/prometheus/prometheus.yml
+      - ./data/cassandra:/var/lib/cassandra2
+    environment:
+      - CASSANDRA_CLUSTER_NAME=citizix
+  redis:
+    image: "redis:latest"
+    volumes:
+      - .docker/data/redis:/data
+    networks:
+      - app-tier
+    ports:
+      - "6379:6379"
+networks:
+  app-tier:
+    driver: bridge

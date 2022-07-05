@@ -7,8 +7,7 @@ module.exports = {
   logger: bunyan.createLogger({ name: appname }),
   redis: {
     options: {
-      host: 'localhost',
-      port: 6379
+      url: `redis://${process.env.REDIS_HOST || 'localhost'}:6379`
     }
   }
 };

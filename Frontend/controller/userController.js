@@ -58,10 +58,13 @@ module.exports = {
 
     },
     getCart: async function (req, res, next) {
-        console.log(req.token)
+        try {
+            const cart = await APIservice.getCart(req.token)
+            res.send(cart)
+        } catch (error) {
+            res.status(400).send("cart không tồn tại");
+        }
 
-        const cart = await APIservice.getCart(req.token)
-        res.send(cart)
     },
     deleteCart: async function (req, res, next) {
         const cart = await APIservice.deleteCart(req.token, req.body.customerId)

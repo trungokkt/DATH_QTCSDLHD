@@ -1,4 +1,5 @@
-var axios = require("axios").default
+var axios = require("axios")
+
 const loginController = {
     index: function (req, res, next) {
         res.render("login", {
@@ -23,7 +24,7 @@ const loginController = {
                 },
                 data: data
             })
-            if(!result){
+            if (!result) {
                 throw new Error("login false")
             }
             req.session.token = result.data
@@ -35,7 +36,42 @@ const loginController = {
     logout: async function (req, res, next) {
         delete req.session.token
         res.redirect('/login')
-    }
+    },
+    register_index: async function (req, res, next) {
+        res.render('register', {
+            layout: "login",
+        })
+    },
+    register: async function (req, res, next) {
+        try {
+            const { username, password, phone, fullname, address, gender, email } = req.body;
+            var data = JSON.stringify({
+                "username": username,
+                "password": password,
+                "phone": phone,
+                "email": email,
+                "fullname": fullname,
+                "address": address,
+                "gender": gender
+            });
 
+            const result = await axios({
+                method: 'post',
+                url: 'http://localhost:8000/customer/signup',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            })
+            console.log(result.data)
+            if (!result) {
+                throw new Error("login false")
+            }
+            console.log(result.data)
+            return res.redirect('/login')
+        } catch (error) {
+            res.redirect('/register')
+        }
+    }
 }
 module.exports = loginController

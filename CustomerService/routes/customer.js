@@ -5,12 +5,12 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 var config = require('../db/config');
 const { v4: uuidv4 } = require('uuid');
-
+const Uuid = require('cassandra-driver').types.Uuid;
 const cassandra = require('cassandra-driver');
 const auth = require('../middleware/auth');
 
 const client = new cassandra.Client({
-    contactPoints: ['localhost'],
+    contactPoints: [process.env.CASSANDRA_HOST || 'localhost'],
     localDataCenter: 'datacenter1',
     keyspace: 'dath_qtcsdlhd'
 });
@@ -26,6 +26,7 @@ router.post('/login', async function (req, res, next) {
         const user = result.first();
 
         const isPasswordMatch = await bcrypt.compare(password, user.password)
+        console.log(isPasswordMatch)
         if (!isPasswordMatch) {
             throw new Error({
                 error: 'Invalid login credentials'
@@ -46,6 +47,7 @@ router.post('/login', async function (req, res, next) {
 /* POST create customer account */
 router.post('/signup', async function (req, res, next) {
     try {
+        console.log(req.body)
         const customerid = uuidv4()
         const username = req.body.username
         const password = await bcrypt.hash(req.body.password, 8)
@@ -60,11 +62,10 @@ router.post('/signup', async function (req, res, next) {
 
         const query = 'SELECT * FROM account WHERE username = ?';
         const result = await client.execute(query, [username], { prepare: true });
-        if (result) {
+        if (result.rows[0]) {
             throw new Error("Tài khoản đã tồn tại")
         }
 
-        console.log(customerid, username, address, fullname, gender, phone, email, bod, relationship)
         const queries = [
             {
                 query: 'insert into account(username, password, user_type) values(?,?,?)',
@@ -95,8 +96,8 @@ router.get('/me', auth, async function (req, res, next) {
 
 /* POST create customer child */
 router.post('/create', auth, async function (req, res, next) {
-    try {
-        const customerid = req.body.customerid
+    //try {
+        const customerid = req.body.customerid;
         const address = req.body.address || ""
         const fullname = req.body.fullname
         const email = req.body.email || ""
@@ -104,30 +105,51 @@ router.post('/create', auth, async function (req, res, next) {
         const phone = req.body.phone
         const relationship = req.body.relationship
         const username = req.username
-
+        const bod = req.body.bod
         const queryCheck = 'SELECT * FROM customer WHERE customerid = ?';
         const resultCheck = await client.execute(queryCheck, [customerid], { prepare: true });
-        if (resultCheck) {
+        if (resultCheck.first()) {
             return res.send(resultCheck.first())
         }
-        
+        console.log(resultCheck)
+
 
         console.log(customerid, address, bod, email, fullname, gender, phone, relationship, username)
         const query = 'insert into customer(customerid, address, bod, email, fullname, gender, phone, relationship, username) values(?,?,?,?,?,?,?,?,?)';
-        client.execute(query, [customerid, address, bod, email, fullname, gender, phone, relationship, username],{ prepare: true })
+        client.execute(query, [customerid, address, bod, email, fullname, gender, phone, relationship, username], { prepare: true })
             .then(result => res.send(req.body));
+    //} catch (error) {
+    //    res.status(400).send(error)
+    //}
+});
+
+/* GET customer from user  để bên đưang ki tiêm dùng*/
+router.get('/', auth, function (req, res, next) {
+    try {
+        const username = req.username
+
+        const query = "select * from customer where username = ? ALLOW FILTERING";
+
+        client.execute(query, [username])
+            .then(result => {
+                if (!result.rows[0]) {
+                    throw new Error()
+                }
+                res.send(
+                    result.rows
+                )
+            });
     } catch (error) {
         res.status(400).send(error)
     }
 });
-/* GET customer */
 router.delete('/', function (req, res, next) {
     try {
         const customerid = req.body.customerid || req.query.customerid
         if (!customerid) {
             throw new Error()
         }
-        const query = 'DELETE FROM cycling.cyclist_name WHERE customerid=? IF EXISTS;';
+        const query = 'DELETE FROM customer WHERE customerid=? IF EXISTS;';
 
         client.execute(query, [customerid])
             .then(result => {

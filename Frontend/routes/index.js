@@ -8,11 +8,15 @@ const auth_require = require('../middleware/auth_require')
 const unAuth = require('../middleware/unauth')
 
 /* GET home page. */
+
+
 router.get("/", auth, userController.index);
 router.get("/search", auth, userController.search);
 router.get("/detail/:code", auth, userController.productDetail);
 router.get("/login",unAuth, loginController.index);
 router.post("/login",unAuth, loginController.login);
+router.get("/register",unAuth, loginController.register_index);
+router.post("/register",unAuth, loginController.register);
 
 router.get("/logout",auth, auth_require, loginController.logout);
 router.get("/injection-registration",auth, auth_require, userController.injection_registration);

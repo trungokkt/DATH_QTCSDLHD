@@ -36,8 +36,8 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="dob">Ngày sinh</label>
-                            <input type="date" id="dob" name="dob" class="form-control" required="required"
+                            <label for="bod">Ngày sinh</label>
+                            <input type="date" id="bod" name="bod" class="form-control" required="required"
                                 placeholder="Ngày sinh">
                         </div>
                         <div class="form-group col-md-6">
@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p class="font-weight-bolder h4 text-warning text-right" id="totalPayment">
-                                        1.635.000 VNĐ
+                                        0
                                     </p>
                                 </div>
                             </div>
@@ -449,7 +449,7 @@
         console.log(item)
         $('#name').val(item.name)
         $('#relations').val(item.relations)
-        $('#dob').val(item.dob)
+        $('#bod').val(item.bod)
         $('#' + item.gender).prop('checked', true)
         $('#phone').val(item.phone)
         $('#email').val(item.email)
@@ -495,7 +495,7 @@
     $("#reset-form").click(() => {
         $('#name').val('')
         $('#relations').val('')
-        $('#dob').val('')
+        $('#bod').val('')
         $('input[name="gender"]').removeAttr('checked')
         $('#phone').val('')
         $('#email').val('')

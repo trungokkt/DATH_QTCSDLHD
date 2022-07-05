@@ -10,5 +10,4 @@ router.get('/name', vaccineController.findProduct);
 router.post('/', vaccineController.createProduct);
 router.put('/', vaccineController.updateProduct)
 router.delete('/', vaccineController.deleteProduct)
-
 module.exports = router;

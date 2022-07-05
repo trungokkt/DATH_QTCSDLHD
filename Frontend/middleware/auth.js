@@ -3,6 +3,7 @@ const JWT_KEY =  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjk2NWQ5MzljM
 
 const auth = async (req, res, next) => {
     try {
+        
         if(!req.session.token){
             return next()
         }

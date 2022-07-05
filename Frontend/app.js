@@ -39,7 +39,7 @@ app.engine('hbs', exphbs.engine({
             );
 
         },
-        json: function(context) {
+        json: function (context) {
             return JSON.stringify(context);
         },
         if_eq: function (a, b, opts) {
@@ -57,14 +57,13 @@ app.use(cookieParser());
 
 // enable this if you run behind a proxy (e.g. nginx)
 app.set('trust proxy', 1);
-
 const RedisStore = connectRedis(session)
 //Configure redis client
 const redisClient = redis.createClient({
-    host: process.env.REDIS_HOST || 'localhost',
-    port: process.env.REDIS_PORT || 6379,
+    url: `redis://${process.env.REDIS_HOST || 'localhost'}:6379`,
     legacyMode: true
 })
+
 redisClient.on('error', function (err) {
     console.log('Could not establish a connection with redis. ' + err);
 });
@@ -73,6 +72,8 @@ redisClient.on('connect', function (err) {
 });
 
 redisClient.connect().catch(console.error)
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     store: new RedisStore({
@@ -87,7 +88,6 @@ app.use(session({
         maxAge: 365 * 24 * 60 * 60
     }
 }));
-
 app.use('/', indexRouter);
 app.use('/admin', AdminRouter);
 

@@ -65,5 +65,11 @@ module.exports = {
         } catch (error) {
             res.redirect("/404")
         }
+    },
+    setInjectTime: async function(req,res,next){
+        const { orderItemId, vaccineId ,inJectTime } = req.body;
+        console.log( req.body)
+        const result = await APIService.setInjectTime(orderItemId, vaccineId, inJectTime, req.token);
+        res.send(result)
     }
 }

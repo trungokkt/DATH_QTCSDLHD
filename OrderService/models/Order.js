@@ -79,7 +79,7 @@ orderSchema.statics.createOrder = async (username, token) => {
                 gender: cartItem.gender,
                 phone: cartItem.phone,
                 relationship: cartItem.relations,
-                bod: cartItem.dob
+                bod: cartItem.bod
             }
             //create customer 
             const result = await axios({
@@ -130,6 +130,14 @@ orderSchema.statics.createOrder = async (username, token) => {
         await session.commitTransaction();
         session.endSession();
         //
+        await axios({
+            url: `http://localhost:3004/cart/all`,
+            method: 'delete',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": Authorization
+            }
+        })
         return order
     } catch (error) {
         //console.log(error)
