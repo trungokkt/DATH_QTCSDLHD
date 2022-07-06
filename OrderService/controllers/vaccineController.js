@@ -11,8 +11,19 @@ module.exports = {
     },
     findProduct: async function (req, res) {
         try {
-            const name = req.query.name || req.body.name
-            const vaccines = await Vaccine.findByName(name)
+            const keyword = req.body.keyword
+            console.log(req.body.keyword)
+            const vaccines = await Vaccine.findByKeyword(keyword)
+            res.send(vaccines)
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    },
+    getProductByCategory: async function (req, res) {
+        try {
+            const categoryid = req.query.categoryid || req.body.categoryid
+            console.log(categoryid)
+            const vaccines = await Vaccine.find({ types: {$elemMatch:{$eq: categoryid} } }).sort({ 'createdAt': -1 })
             res.send(vaccines)
         } catch (error) {
             res.status(400).send(error);
@@ -20,7 +31,7 @@ module.exports = {
     },
     findProductByCode: async function (req, res) {
         try {
-            const code =  req.query.code ||req.body.code 
+            const code = req.query.code || req.body.code
             if (!code) {
                 res.status(404).send({
                     "message": "code does not exist"
@@ -34,7 +45,7 @@ module.exports = {
     },
     findProductById: async function (req, res) {
         try {
-            const _id = req.query._id ||req.body._id
+            const _id = req.query._id || req.body._id
             const vaccine = await Vaccine.findById(_id)
             res.send(vaccine)
         } catch (error) {
@@ -89,7 +100,7 @@ module.exports = {
                 throw new Error()
             }
             vaccine.isDelete = true
-           
+
             await vaccine.save()
             res.send(vaccine)
         } catch (error) {

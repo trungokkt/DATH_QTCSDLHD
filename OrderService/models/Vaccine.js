@@ -106,14 +106,12 @@ vaccineSchema.pre('save', async function (next) {
     }
     next()
 })
-vaccineSchema.statics.findByName = async (name) => {
+vaccineSchema.statics.findByKeyword = async (keyword) => {
     // Search for a user by username and password.
     const vaccines = await Vaccine.find({
         $or: [
-            { name: new RegExp(name, 'i') },
-            { code: new RegExp(name, 'i') },
-            { prevention: new RegExp(name, 'i') },
-            { manufacturer: new RegExp(name, 'i') }
+            { name: new RegExp(keyword, 'i') },
+            { prevention: new RegExp(keyword, 'i') },
         ]
     })
     return vaccines

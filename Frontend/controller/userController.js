@@ -9,6 +9,14 @@ module.exports = {
             products: products, categories: categories, user: req.user
         })
     },
+    getAllProductByCategory: async function (req, res, next) {
+        console.log(req.params.categoryid)
+        const products = await APIservice.getAllProductByCategory(req.params.categoryid);
+        const categories = await APIservice.getCategory()
+        res.render('index', {
+            products: products, categories: categories, user: req.user
+        })
+    },
     productDetail: async function (req, res, next) {
         const code = req.params.code
         const product = await APIservice.getProductByCode(code);
@@ -82,6 +90,7 @@ module.exports = {
         const keyword = req.query.keyword || req.body.keyword
         const products = await APIservice.getProductByName(keyword);
         const categories = await APIservice.getCategory()
+
         res.render('index', {
             products: products, categories: categories, user: req.user
         })
@@ -97,13 +106,13 @@ module.exports = {
             orders: orders
         });
     },
-    contact_us : function (req,res,next) {
+    contact_us: function (req, res, next) {
         console.log(req.user)
-        res.render("contact-us",{
+        res.render("contact-us", {
             user: req.user
         })
     },
-    getCustomer:async function(req,res,next){
+    getCustomer: async function (req, res, next) {
         const customer = await APIservice.getCustomer(req.token)
         res.send(customer)
     }

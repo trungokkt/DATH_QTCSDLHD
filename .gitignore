@@ -40,7 +40,9 @@ GatewatAPI/node_modules/
 OrderService/node_modules/
 UserLoginAPI/
 jspm_packages/
-
+.docker/
+data/
+cassandra/
 # Typescript v1 declaration files
 typings/
 

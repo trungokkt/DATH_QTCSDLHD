@@ -12,6 +12,8 @@ const unAuth = require('../middleware/unauth')
 
 router.get("/", auth, userController.index);
 router.get("/search", auth, userController.search);
+router.get("/product/:categoryid", auth, userController.getAllProductByCategory);
+
 router.get("/detail/:code", auth, userController.productDetail);
 router.get("/login",unAuth, loginController.index);
 router.post("/login",unAuth, loginController.login);

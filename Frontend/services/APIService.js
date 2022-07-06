@@ -11,6 +11,16 @@ const APIService = {
         })
         return products.data
     },
+    getAllProductByCategory: async (categoryid) => {
+        const products = await axios({
+            url: `${host}/vaccines/category?categoryid=${categoryid}`,
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        return products.data
+    },
     getProductByCode: async (code) => {
         const products = await axios({
             url: `${host}/vaccines/code?code=${code}`,
@@ -23,10 +33,13 @@ const APIService = {
     },
     getProductByName: async (name) => {
         const products = await axios({
-            url: `${host}/vaccines/name?keyword=${name}`,
+            url: `${host}/vaccines/name`,
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',
+            },
+            data: {
+                keyword: name
             }
         })
         return products.data
@@ -214,7 +227,7 @@ const APIService = {
         })
         return result.data
     },
-    getCustomer: async (token)=>{
+    getCustomer: async (token) => {
         const Authorization = "Bearer " + token
         const result = await axios({
             url: `${host}/customer`,

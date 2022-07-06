@@ -7,6 +7,8 @@ router.get('/code', vaccineController.findProductByCode);
 router.get('/id', vaccineController.findProductById);
 router.get('/array', vaccineController.findProductByArray);
 router.get('/name', vaccineController.findProduct);
+router.get('/category', vaccineController.getProductByCategory);
+
 router.post('/', vaccineController.createProduct);
 router.put('/', vaccineController.updateProduct)
 router.delete('/', vaccineController.deleteProduct)
