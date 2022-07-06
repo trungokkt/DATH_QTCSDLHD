@@ -102,5 +102,9 @@ module.exports = {
         res.render("contact-us",{
             user: req.user
         })
+    },
+    getCustomer:async function(req,res,next){
+        const customer = await APIservice.getCustomer(req.token)
+        res.send(customer)
     }
 }

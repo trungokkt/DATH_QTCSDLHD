@@ -72,7 +72,7 @@ router.post('/signup', async function (req, res, next) {
                 params: [username, password, user_type]
             }, {
                 query: 'insert into customer(customerid, username, address, fullname, gender, phone, email, bod, relationship) values(?,?,?,?,?,?,?,?,?)',
-                params: [customerid, username, address, fullname, gender, phone, email, bod, relationship]
+                params: [customerid, username, address, fullname, gender, phone, email, bod , relationship]
             }
         ];
 
@@ -127,7 +127,7 @@ router.post('/create', auth, async function (req, res, next) {
 router.get('/', auth, function (req, res, next) {
     try {
         const username = req.username
-
+        console.log(username)
         const query = "select * from customer where username = ? ALLOW FILTERING";
 
         client.execute(query, [username])
@@ -143,6 +143,7 @@ router.get('/', auth, function (req, res, next) {
         res.status(400).send(error)
     }
 });
+
 router.delete('/', function (req, res, next) {
     try {
         const customerid = req.body.customerid || req.query.customerid

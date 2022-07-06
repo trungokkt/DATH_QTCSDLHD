@@ -3,7 +3,7 @@ var axios = require("axios")
 const loginController = {
     index: function (req, res, next) {
         res.render("login", {
-            layout: "login",
+            layout: "admin",
         });
     },
     login: async function (req, res, next) {
@@ -39,12 +39,12 @@ const loginController = {
     },
     register_index: async function (req, res, next) {
         res.render('register', {
-            layout: "login",
+            layout: "admin",
         })
     },
     register: async function (req, res, next) {
         try {
-            const { username, password, phone, fullname, address, gender, email } = req.body;
+            const { username, password, phone, fullname, address, gender, email,bod } = req.body;
             var data = JSON.stringify({
                 "username": username,
                 "password": password,
@@ -52,7 +52,8 @@ const loginController = {
                 "email": email,
                 "fullname": fullname,
                 "address": address,
-                "gender": gender
+                "gender": gender,
+                "bod": bod
             });
 
             const result = await axios({

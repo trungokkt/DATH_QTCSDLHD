@@ -20,7 +20,8 @@
                                                 <i class="material-icons">people</i>
                                             </span>
                                         </div>
-                                        <input type="text" name="username" class="form-control" placeholder="Tài Khoản..." value="">
+                                        <input type="text" name="username" class="form-control"
+                                            placeholder="Tài Khoản..." value="">
                                     </div>
                                 </span>
 
@@ -31,12 +32,13 @@
                                                 <i class="material-icons">lock_outline</i>
                                             </span>
                                         </div>
-                                        <input type="password" name="password" class="form-control" placeholder="Mật Khẩu..." value="123456789">
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="Mật Khẩu..." value="123456789">
                                     </div>
                                 </span>
                             </div>
                             <div class="card-footer justify-content-center">
-                                <button type="submit"    class="btn btn-rose btn-link btn-lg">ĐĂNG NHẬP</button>
+                                <button type="submit" class="btn btn-rose btn-link btn-lg">ĐĂNG NHẬP</button>
                             </div>
                         </div>
                     </form>
@@ -46,4 +48,9 @@
         {{>footer_login}}
     </div>
 </div>
-{{>script_main}}
+{{>script}}
+<script>
+    $(document).ready(function () {
+        $('.card').removeClass('card-hidden');
+    });
+</script>

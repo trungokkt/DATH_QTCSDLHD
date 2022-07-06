@@ -6,6 +6,14 @@
     <div class="bg">
         <div class="row">
             <div class="col-sm-8">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="select-a-relative">Chọn người thân</label>
+                        <select class="form-control" id="select-a-relative">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
                 <div class="contact-form">
                     <h2 class="title text-center">Thông tin</h2>
                     <div class="status alert alert-success" style="display: none"></div>
@@ -20,18 +28,18 @@
                         <div class="form-group col-md-6 col-xs-12">
                             <label for="relations">Mối quan hệ</label>
                             <select class="form-control" id="relations" name="relations">
-                                <option>Bản thân</option>
-                                <option>Cha</option>
-                                <option>Mẹ</option>
-                                <option>Ông</option>
-                                <option>Bà</option>
-                                <option>Anh</option>
-                                <option>Chị</option>
-                                <option>Em</option>
-                                <option>Vợ</option>
-                                <option>Chồng</option>
-                                <option>Con</option>
-                                <option>Cùng hộ khẩu</option>
+                                <option value="Bản thân">Bản thân</option>
+                                <option value="Cha">Cha</option>
+                                <option value="Mẹ">Mẹ</option>
+                                <option value="Ông">Ông</option>
+                                <option value="Bà">Bà</option>
+                                <option value="Anh">Anh</option>
+                                <option value="Chị">Chị</option>
+                                <option value="Em">Em</option>
+                                <option value="Vợ">Vợ</option>
+                                <option value="Chồng">Chồng</option>
+                                <option value="Con">Con</option>
+                                <option value="Cùng hộ khẩu">Cùng hộ khẩu</option>
                             </select>
                         </div>
 
@@ -192,6 +200,8 @@
     var provinceVNVC
     var cart
     var totalPayment
+    var customers
+
     var provinceVNVCSelector = $('#provinceVNVC')
     var VNCC_adresssSelector = $('#VNCC_adresss')
     var provinceSelector = $('#province')
@@ -248,6 +258,17 @@
             type: 'get',
             success: function (result) {
                 provinceVNVC = result
+            }
+        })
+        $.ajax({
+            async: false,
+            url: "/customer",
+            type: 'get',
+            success: function (result) {
+                customers = result
+                customers.forEach((customer) => {
+                    $("#select-a-relative").append(`<option value="${customer.customerid}">${customer.fullname}(${customer.relationship})</option>`)
+                })
             }
         })
         getCart()
@@ -492,7 +513,29 @@
             })
         }
     })
+    $("#select-a-relative").change(() => {
+        resetFrom()
+        customerid = $('#select-a-relative').find(":selected").val()
+        const item = customers.find((e) => e.customerid == customerid)
+        console.log(item)
+        $('#name').val(item.fullname)
+        $('#relations').val(item.relationship)
+        $('#bod').val(item.bod)
+        $('#' + item.gender).prop('checked', true)
+        $('#phone').val(item.phone)
+        $('#email').val(item.email)
+        $('#street').val(item.street).change()
+        $('#province').val(item.province).change()
+        $('#district').val(parseInt(item.district)).change()
+        $('#wards').val(item.wards).change()
+        $('#address').val(item.address)
+        $('#main-contact-form').attr('onsubmit', `return submitUpdateProduct(event,'${customerid}'); return false;`).change();
+    })
     $("#reset-form").click(() => {
+        resetFrom()
+    })
+    function resetFrom() {
+        console.log('reset')
         $('#name').val('')
         $('#relations').val('')
         $('#bod').val('')
@@ -506,9 +549,8 @@
         $('#address').val('')
         $('#provinceVNVC').val('')
         $('#VNCC_adresss').val('')
-        $('.selectpicker#select-vaccine').selectpicker('val', '').change()
         $('#main-contact-form').attr('onsubmit', `return submitAddProduct(event);`)
-    })
+    }
 </script>
 <script>
     $.fn.serializeObject = function () {
@@ -541,4 +583,3 @@
 
     }
 </script>
-

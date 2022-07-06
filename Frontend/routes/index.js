@@ -18,6 +18,9 @@ router.post("/login",unAuth, loginController.login);
 router.get("/register",unAuth, loginController.register_index);
 router.post("/register",unAuth, loginController.register);
 
+router.get("/customer", auth, userController.getCustomer);
+
+
 router.get("/logout",auth, auth_require, loginController.logout);
 router.get("/injection-registration",auth, auth_require, userController.injection_registration);
 router.post("/addCart",auth, auth_require, userController.addCart);

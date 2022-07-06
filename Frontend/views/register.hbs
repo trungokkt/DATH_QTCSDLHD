@@ -121,8 +121,7 @@
                                             </label>
                                         </div>
                                         <div class="text-center">
-                                            <button href="#pablo" type="submit"
-                                                class="btn btn-primary btn-round mt-4">Đăng ký</button>
+                                            <button href="#" type="submit" class="btn btn-primary btn-round mt-4">Đăng ký</button>
                                         </div>
 
                                     </div>
@@ -141,26 +140,28 @@
                 </div>
             </div>
         </div>
-        {{>footer_login}}
+
     </div>
 </div>
 
 {{>script}}
-
 <script>
     $(document).ready(function () {
+        // initialise Datetimepicker and Sliders
         $('.datepicker').datetimepicker({
-                icons: {
-                    time: "fa fa-clock-o",
-                    date: "fa fa-calendar",
-                    up: "fa fa-chevron-up",
-                    down: "fa fa-chevron-down",
-                    previous: 'fa fa-chevron-left',
-                    next: 'fa fa-chevron-right',
-                    today: 'fa fa-screenshot',
-                    clear: 'fa fa-trash',
-                    close: 'fa fa-remove'
-                }
-            });
+            format:"YYYY-MM-DD",
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            }
+        });
+
     });
 </script>

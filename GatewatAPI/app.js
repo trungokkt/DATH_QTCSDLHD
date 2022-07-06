@@ -18,6 +18,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const httpProxy = require('express-http-proxy');
 
 const userServiceProxy = httpProxy('http://localhost:3003')
+app.all('/customer/', (req, res, next) => {
+    userServiceProxy(req,res,next)
+});
 app.all('/customer/*', (req, res, next) => {
     userServiceProxy(req,res,next)
 });

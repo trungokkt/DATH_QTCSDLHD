@@ -213,6 +213,18 @@ const APIService = {
             }
         })
         return result.data
+    },
+    getCustomer: async (token)=>{
+        const Authorization = "Bearer " + token
+        const result = await axios({
+            url: `${host}/customer`,
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": Authorization
+            },
+        })
+        return result.data
     }
 }
 module.exports = APIService
