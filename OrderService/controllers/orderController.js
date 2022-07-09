@@ -26,8 +26,32 @@ module.exports = {
             res.status(401).send(error);
         }
     },
-    updateOrder: async function (req, res, next) {
+    updateStatusOrder: async function (req, res, next) {
+        try {
+            const order = await Order.findById(req.body._id)
+            order.status = req.body.status;
+            await order.save();
+            res.send(order)
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    },
+    updateStatusOrderItem: async function (req, res, next) {
+        try {
+            console.log(req.body.vaccine)
+            const orderItem = await OrderItem.findById(req.body._id)
 
+            const index = orderItem.items.findIndex(object => {
+                console.log(object.vaccine.toString() ,  req.body.vaccine)
+                return object.vaccine.toString() == req.body.vaccine ;
+            });
+            console.log(index)
+            orderItem.items[index].isInject = true
+            await orderItem.save();
+            res.send(orderItem)
+        } catch (error) {
+            res.status(400).send(error);
+        }
     },
     orderByAccount: async function (req, res, next) {
         try {
@@ -107,17 +131,17 @@ module.exports = {
     },
     setInjectTime: async function (req, res, next) {
         try {
-            const { orderItemId, vaccineId ,inJectTime } = req.body;
+            const { orderItemId, vaccineId, inJectTime } = req.body;
             console.log(req.body)
 
             const orderItem = await OrderItem.findById(orderItemId)
 
             const index = orderItem.items.findIndex((e) => e.vaccine == vaccineId)
-           
+
 
             orderItem.items[index].injectionTime = inJectTime
             await orderItem.save();
-            
+
             res.send(orderItem)
         } catch (error) {
             res.status(401).send(error);

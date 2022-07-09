@@ -214,9 +214,12 @@
             type: 'get',
             success: function (result) {
                 products = result
+                console.log(products)
                 products.forEach((product) => {
                     $("#select-vaccine").append(`<option data-tokens="${product.name}" value="${product._id}">${product.name}</option>`)
                 })
+                $('.selectpicker#select-vaccine').selectpicker();
+
 
             }
         })
@@ -272,6 +275,7 @@
             }
         })
         getCart()
+        resetFrom()
     });
     provinceSelector.change(function () {
         let id = $(this).val()
@@ -487,6 +491,16 @@
     $("#select-vaccine").change(function () {
         let ids = $(this).val()
         $(".product-show").empty()
+        console.log(ids)
+        $.ajax({
+            url: "/item/replace",
+            method: "post",
+            dataType: "json",
+            data: {ids: ids },
+            success: function (res) {
+                console.log(res)
+            }
+        })
         if (ids) {
             ids.forEach((id) => {
                 product = products.find((s) => s._id == id)
@@ -512,6 +526,7 @@
                     </div>`)
             })
         }
+
     })
     $("#select-a-relative").change(() => {
         resetFrom()
@@ -535,7 +550,7 @@
         resetFrom()
     })
     function resetFrom() {
-        console.log('reset')
+        $('.selectpicker#select-vaccine').selectpicker('val', items).change();
         $('#name').val('')
         $('#relations').val('')
         $('#bod').val('')
@@ -568,9 +583,6 @@
         });
         return o;
     };
-    $(function () {
-        $('.selectpicker').selectpicker();
-    });
     function deleteCartItem(key) {
         $.ajax({
             url: "/deleteCart",
@@ -582,4 +594,5 @@
         })
 
     }
+
 </script>

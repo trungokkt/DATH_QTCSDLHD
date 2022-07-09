@@ -37,4 +37,11 @@ router.get("/bang-gia",auth, auth_require, userController.table_price)
 router.get("/tra-cuu-thong-tin",auth, auth_require, userController.lookup_information_index)
 router.get("/contact-us",auth, userController.contact_us)
 
+router.get("/item", userController.getItem);
+router.post("/item", userController.addItem);
+router.post("/item/replace", userController.replaceItems);
+router.delete("/item", userController.deleteItem);
+router.delete("/items/all", userController.deleteAllItem);
+
+
 module.exports = router;

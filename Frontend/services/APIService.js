@@ -154,6 +154,37 @@ const APIService = {
         })
         return cart.data
     },
+    updateStatusOrder: async (_id, status, token) => {
+        const Authorization = "Bearer " + token
+        const result = await axios({
+            url: `${host}/order/status`,
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": Authorization
+            },
+            data: {
+                _id, status
+            }
+        })
+        return result.data
+    },
+    updateStatusOrderItem: async (_id, vaccine, token) => {
+        const Authorization = "Bearer " + token
+        const result = await axios({
+            url: `${host}/order/injected`,
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": Authorization
+            },
+            data: {
+                _id, 
+                vaccine
+            }
+        })
+        return result.data
+    },
     getOrder: async (token) => {
         const Authorization = "Bearer " + token
         const orders = await axios({

@@ -23,15 +23,16 @@
                         <td>
                             {{formatMoney totalBill}}
                         </td>
-                         <td>
+                        <td>
                             {{#each orderItem}}
                             <div>
-                               {{name}}
+                                <a href="#" id="click_{{_id}}" data-toggle="modal" data-target="#myModal"
+                                    data-whatever="{{json this}}">{{name}}</a>
                             </div>
                             {{/each}}
                         </td>
                         <td>
-                            {{#if isPayment}}Đã tiêm{{else}}Chưa tiêm xong{{/if}}
+                            {{status}}
                         </td>
                     </tr>
                     {{/each}}
@@ -40,5 +41,86 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="myModal" aria-labelledby="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-no-bordered table-hover" width="100%" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Tên Vaccine</th>
+                            <th>Giá</th>
+                            <th>Ngày hẹn</th>
+                            <th>Địa chỉ tiêm</th>
+                            <th>Tình trạng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="items">
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {{>footer_main}}
 {{>script_main}}
+<script>
+    $(document).ready(function () {
+        $('#myModal').on('shown.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            console.log(recipient)
+
+            var modal = $(this)
+            modal.find("#items").empty()
+            modal.find(".modal-title").html(`<h3>${recipient.name}</h3>`)
+
+            for (const key in recipient.items) {
+                const element = recipient.items[key]
+                console.log(element.injectionTime)
+                modal.find("#items").append(`
+                                <tr id="item${element.vaccine._id}">
+                                    <td>${element.vaccine.name}</td>
+                                    <td>${formatMoney(element.price)}</td>
+                                    <td style="display: flex; align-items: center;">
+                                         <div class="form-group">
+                                           ${element.injectionTime ? date2str(new Date(element.injectionTime), 'MM/dd/yyyy hh:ss') : ''}
+                                        </div>
+                                    </td>
+                                    <td>${recipient.addressVNCVC}</td>
+                                    <td>${element.isInject ? "Đã tiêm" : "Chưa tiêm"}</td>
+                                </tr>
+                `)
+            }
+        })
+    })
+    function date2str(x, y) {
+        var z = {
+            M: x.getMonth() + 1,
+            d: x.getDate(),
+            h: x.getHours(),
+            m: x.getMinutes(),
+            s: x.getSeconds()
+        };
+        y = y.replace(/(M+|d+|h+|m+|s+)/g, function (v) {
+            return ((v.length > 1 ? "0" : "") + z[v.slice(-1)]).slice(-2)
+        });
+
+        return y.replace(/(y+)/g, function (v) {
+            return x.getFullYear().toString().slice(-v.length)
+        });
+    }
+</script>

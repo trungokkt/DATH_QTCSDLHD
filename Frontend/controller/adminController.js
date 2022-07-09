@@ -71,5 +71,16 @@ module.exports = {
         console.log( req.body)
         const result = await APIService.setInjectTime(orderItemId, vaccineId, inJectTime, req.token);
         res.send(result)
-    }
+    },
+    updateStatusOrder: async function (req, res, next) {
+        const { _id, status} = req.body;
+        console.log( _id, status)
+        const result = await APIService.updateStatusOrder( _id, status,req.token)
+        res.send(result)
+    },
+    updateStatusOrderItem: async function (req, res, next) {
+        const { orderItemId, vaccineId } = req.body;
+        const result = await APIService.updateStatusOrderItem( orderItemId, vaccineId ,req.token)
+        res.send(result)
+    },
 }

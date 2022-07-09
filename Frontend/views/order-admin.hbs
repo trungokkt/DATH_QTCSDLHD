@@ -38,7 +38,6 @@
                                             <th>Tổng Tiền</th>
                                             <th>Danh Sách</th>
                                             <th>Tình trạng</th>
-                                            <th class="disabled-sorting text-right"></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -49,7 +48,6 @@
                                             <th>Tổng Tiền</th>
                                             <th>Danh Sách</th>
                                             <th>Tình trạng</th>
-                                            <th class="text-right"></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -75,15 +73,10 @@
                                             </td>
 
                                             <td>
-                                                <div>{{status}}</div>
+                                                <a href="#" data-toggle="modal" data-target="#modalUpdateOrderStatus"
+                                                    data-whatever="{{json this}}">{{status}}</a>
                                             </td>
-                                            <td class="text-right">
-                                                <a href="#" class="btn btn-link btn-warning btn-just-icon edit"
-                                                    data-toggle="modal" data-target="#modalEditProduct"
-                                                    data-whatever=""><i class="material-icons">dvr</i></a>
-                                                <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i
-                                                        class="material-icons">close</i></a>
-                                            </td>
+
                                         </tr>
                                         {{/each}}
                                     </tbody>
@@ -102,15 +95,27 @@
 </div>
 
 <!-- Classic Modal -->
-<div class="modal fade modal-xl" id="modalEditProduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="modalUpdateOrderStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 960px;">
-        <div class="modal-content modal-xl">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-body">
-                <div class="card">
-                    <div class="card-body">
 
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Tình trạng</h4>
                     </div>
+                    <div class="card-body">
+                        <select class="selectpicker" id="status-order" data-style="select-with-transition"
+                            name="status">
+                            <option value="Chờ xác nhận">Chờ xác nhận</option>
+                            <option value="Đã xác nhận">Đã xác nhận</option>
+                            <option value="Hoàn thành">Hoàn thành</option>
+                            <option value="Huỷ" checked>Huỷ</option>
+                        </select>
+                        <button class="btn btn-primary update-status">Cập nhật</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -172,11 +177,7 @@
             },
         });
         var table = $('#datatables').DataTable();
-        // Edit record
-        table.on('click', '.edit', function () {
-            $tr = $(this).closest('tr');
-            var data = table.row($tr).data();
-        });
+
         // Delete a record
         table.on('click', '.remove', function (e) {
             $tr = $(this).closest('tr');
@@ -185,7 +186,6 @@
         });
 
         $('#modalOrderItem').on('show.bs.modal', function (event) {
-
             var button = $(event.relatedTarget) // Button that triggered the modal
             var recipient = button.data('whatever') // Extract info from data-* attributes
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -209,7 +209,10 @@
                                     </td>
                                     <td>${recipient.addressVNCVC}</td>
                                     <td>${element.isInject ? "Đã tiêm" : "Chưa tiêm"}</td>
-                                    <td><button class="btn btn-link btn-primary btn-just-icon" onclick="deleteOrderItemProduct('${recipient._id}','${element.vaccine._id}')"><i class="material-icons">close</i></button></td>
+                                    <td style="display: flex; align-items: center;">
+                                        <button class="btn btn-link btn-primary btn-just-icon" onclick="deleteOrderItemProduct('${recipient._id}','${element.vaccine._id}')"><i class="material-icons">close</i></button>
+                                        <button class="btn btn-link btn-primary btn-just-icon" onclick="updateInjected('${recipient._id}','${element.vaccine._id}')"><i class="material-icons">done</i></button>    
+                                    </td>
                                 </tr>
                 `)
             }
@@ -230,11 +233,37 @@
         })
         $("#modalOrderItem").on("hidden.bs.modal", function () {
             // put your default event here
-            if(refresh_data){
+            if (refresh_data) {
                 location.reload();
-                refresh_data=false;
+                refresh_data = false;
             }
         });
+
+        $('#modalUpdateOrderStatus').on('show.bs.modal', function (event) {
+
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            console.log(recipient)
+            modal.find("#status-order").val(recipient.status).change();
+            modal.find(".update-status").click(function () {
+                recipient.status = modal.find("#status-order").val()
+                $.ajax({
+                    url: "/admin/order/status",
+                    method: "put",
+                    data: {
+                        _id: recipient._id,
+                        status: recipient.status
+                    },
+                    success: function (result) {
+                        console.log(result)
+                    }
+                })
+            });
+        })
+
         if ($('.slider').length != 0) {
             md.initSliders();
         }
@@ -247,7 +276,7 @@
                 type: "delete",
                 data: { orderItemId: orderItemId, vaccineId: vaccineId },
                 success: function (res) {
-                    $("#item"+vaccineId).remove()
+                    $("#item" + vaccineId).remove()
                     refresh_data = true;
                 }
 
@@ -278,7 +307,7 @@
                 type: "delete",
                 data: { _id: orderItemId },
                 success: function (res) {
-                    location.reload();          
+                    location.reload();
                 }
 
             })
@@ -301,5 +330,16 @@
 
         })
     }
+    function updateInjected(orderItemId, vaccineId){
+        $.ajax({
+            url: "/admin/order/injected",
+            type: "post",
+            data: { orderItemId: orderItemId, vaccineId: vaccineId},
+            success: function (res) {
+                alert("Cập nhật thành công");
+                refresh_data = true
+            }
 
+        })
+    }
 </script>

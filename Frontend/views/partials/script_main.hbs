@@ -1,6 +1,42 @@
-	<script src="/js/jquery.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.scrollUp.min.js"></script>
-	<script src="/js/price-range.js"></script>
-	<script src="/js/jquery.prettyPhoto.js"></script>
-	<script src="/js/main.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/price-range.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+	var items = []
+	$(document).ready(() => {
+		$.ajax({
+			async: false,
+			url: "/item",
+			method: "get",
+			success: function (res) {
+				items = res.items
+			}
+		})
+	})
+	function createNoty(message, type) {
+		var html = '<div class="alert alert-' + type + ' alert-dismissable page-alert">';
+		html += '<button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>';
+		html += message;
+		html += '</div>';
+		$(html).hide().prependTo(".features_items").fadeTo(2000, 500).slideUp(500, function () {
+			$(html).slideUp(500);
+		});
+	};
+	function addItem(id) {
+		$.ajax({
+			url: "/item",
+			method: "post",
+			data: {
+				_id: id
+			},
+			success: function (res) {
+				createNoty('success', 'success');
+			}
+		})
+	}
+
+</script>

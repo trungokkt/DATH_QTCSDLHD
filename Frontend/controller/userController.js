@@ -3,6 +3,7 @@ const APIservice = require("../services/APIService");
 
 module.exports = {
     index: async function (req, res, next) {
+        console.log(req.session.cart_item)
         const products = await APIservice.getAllProduct();
         const categories = await APIservice.getCategory()
         res.render('index', {
@@ -36,11 +37,7 @@ module.exports = {
         try {
             const data = req.body
             delete data.submit
-            if (!data.vaccines) {
-                data.vaccines = data['vaccines[]']
-            } else {
-                data.vaccines = [data.vaccines]
-            }
+
             const cart = await APIservice.addCart(req.token, data)
             res.send(cart)
         } catch (error) {
@@ -53,17 +50,12 @@ module.exports = {
             const data = req.body
             console.log(req.body)
             delete data.submit
-            if (!data.vaccines) {
-                data.vaccines = data['vaccines[]']
-            } else {
-                data.vaccines = [data.vaccines]
-            }
+
             const cart = await APIservice.updateCart(req.token, data)
             res.send(cart)
         } catch (error) {
             console.log(error)
         }
-
     },
     getCart: async function (req, res, next) {
         try {
@@ -99,6 +91,7 @@ module.exports = {
         const result = await APIservice.createOrder(req.token)
         res.redirect("/")
     },
+
     lookup_information_index: async function (req, res, next) {
         const orders = await APIservice.getOrder(req.token)
         res.render('lookup_infomation', {
@@ -115,5 +108,33 @@ module.exports = {
     getCustomer: async function (req, res, next) {
         const customer = await APIservice.getCustomer(req.token)
         res.send(customer)
-    }
+    },
+    getItem: function (req, res, next) {
+        res.send(req.session.cart_item)
+    },
+    addItem: function (req, res, next) {
+        var cart_item = req.session.cart_item
+        cart_item.add(req.body._id)
+        req.session.cart_item = cart_item
+        res.send(req.session.cart_item)
+    },
+    deleteItem: function (req, res, next) {
+        var cart_item = req.session.cart_item
+        cart_item.remove(req.body._id)
+        req.session.cart_item = cart_item
+        res.send(req.session.cart_item)
+    },
+    deleteAllItem: function (req, res, next) {
+        var cart_item = req.session.cart_item
+        cart_item.emty()
+        req.session.cart_item = cart_item
+        res.send(req.session.cart_item)
+    },
+    replaceItems: function (req, res, next) {
+        var cart_item = req.session.cart_item
+        cart_item.replaceItems(req.body.ids)
+        req.session.cart_item = cart_item
+        res.send(req.session.cart_item)
+    },
+    
 }

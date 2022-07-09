@@ -12,6 +12,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var AdminRouter = require('./routes/admin');
+const saveItem = require('./services/saveItem');
 
 
 
@@ -51,8 +52,9 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
-    extended: false
+    extended: true
 }));
+
 app.use(cookieParser());
 
 // enable this if you run behind a proxy (e.g. nginx)
@@ -73,7 +75,6 @@ redisClient.on('connect', function (err) {
 
 redisClient.connect().catch(console.error)
 
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     store: new RedisStore({
@@ -88,6 +89,12 @@ app.use(session({
         maxAge: 365 * 24 * 60 * 60
     }
 }));
+
+app.use(async (req, res, next) => {
+    var cart_item = new saveItem(req.session.cart_item ? req.session.cart_item.items : []);
+    req.session.cart_item = cart_item
+    next()
+})
 app.use('/', indexRouter);
 app.use('/admin', AdminRouter);
 
